@@ -6,5 +6,5 @@ from .models import Problem
 
 
 class ProblemList(generic.ListView):
-    queryset = Problem.objects.all()
+    queryset = Problem.objects.filter(status='public')
     template_name = "problems/problems_list.html"
