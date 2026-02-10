@@ -45,6 +45,7 @@ class Problem(models.Model):
 
     # Core fields
     title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField()
     industry = models.CharField(
         max_length=50, choices=INDUSTRY_CHOICES, default='other')
@@ -71,3 +72,20 @@ class Problem(models.Model):
     is_solved = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+
+
+class Take(models.Model):
+    problem = models.ForeignKey(
+        Problem, on_delete=models.CASCADE, related_name='takes')
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='take-author')
+    pain_level = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(10)],
+        help_text="Rate from 1 (minor annoyance) to 10 (critical issue)"
+    )
+    frequency = models.CharField(
+        max_length=20, choices=FREQUENCY_CHOICES, default='daily')
+    affected_people = models.CharField(
+        max_length=20, choices=AFFECTED_CHOICES, default='just_me')
+    description = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
