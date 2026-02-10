@@ -73,12 +73,34 @@ class Problem(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["-created_date"]
+
+    def __str__(self):
+        return f"Title: {self.title}  - by - {self.author}"
+
 
 class Take(models.Model):
+    # Frequency choices
+    FREQUENCY_CHOICES = [
+        ('daily', 'Daily'),
+        ('weekly', 'Weekly'),
+        ('monthly', 'Monthly'),
+        ('occasionally', 'Occasionally'),
+    ]
+
+    # Affected people choices
+    AFFECTED_CHOICES = [
+        ('just_me', 'Just me'),
+        ('my_team', 'My team (5-20)'),
+        ('my_company', 'My company (20+)'),
+        ('my_industry', 'My industry (hundreds+)'),
+    ]
+    # Core fields
     problem = models.ForeignKey(
         Problem, on_delete=models.CASCADE, related_name='takes')
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='take-author')
+        User, on_delete=models.CASCADE, related_name='take_author')
     pain_level = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)],
         help_text="Rate from 1 (minor annoyance) to 10 (critical issue)"
@@ -89,3 +111,9 @@ class Take(models.Model):
         max_length=20, choices=AFFECTED_CHOICES, default='just_me')
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_date"]
+
+    def __str__(self):
+        return f"Title: {self.title}  - by - {self.author}"

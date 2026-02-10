@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Problem
+
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("Hello")
+class ProblemList(generic.ListView):
+    queryset = Problem.objects.all()
+    template_name = "problems/problems_list.html"
