@@ -15,7 +15,7 @@
                                             <p class="author">Author: {{ prob.author }}</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="prob-link">
+                                    <a href="{% url 'problem_detail' prob.slug %}" class="prob-link">
                                         <h2 class="card-title">{{ prob.title }}</h2>
                                         <p class="card-text">{{ prob.description|truncatewords:20 }}</p>
                                     </a>
