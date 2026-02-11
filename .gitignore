@@ -2,3 +2,4 @@
 env.py
 db.sqlite3
 __pycache__
+problems/fixtures
