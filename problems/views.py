@@ -7,4 +7,5 @@ from .models import Problem
 
 class ProblemList(generic.ListView):
     queryset = Problem.objects.filter(status='public')
-    template_name = "problems/problems_list.html"
+    template_name = "problems/index.html"
+    paginate_by = 6
