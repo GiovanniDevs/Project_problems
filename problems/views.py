@@ -43,8 +43,9 @@ def problem_detail(request, slug):
                 request, messages.SUCCESS,
                 'Take submitted and awaiting approval'
             )
-
-    take_form = TakeForm()
+            take_form = TakeForm()  # only reset AFTER successful save
+    else:
+        take_form = TakeForm()
 
     return render(
         request,
