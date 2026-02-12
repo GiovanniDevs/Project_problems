@@ -96,6 +96,13 @@ class Take(models.Model):
         ('my_company', 'My company (20+)'),
         ('my_industry', 'My industry (hundreds+)'),
     ]
+
+    # Publication status
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('public', 'Public'),
+    ]
+
     # Core fields
     problem = models.ForeignKey(
         Problem, on_delete=models.CASCADE, related_name='takes')
@@ -111,9 +118,14 @@ class Take(models.Model):
         max_length=20, choices=AFFECTED_CHOICES, default='just_me')
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='draft')
 
     class Meta:
         ordering = ["-created_date"]
 
     def __str__(self):
-        return f"Title: {self.title}  - by - {self.author}"
+        title = str(self.problem.title)[:20]
+        if len(title) >= 17:
+            title = title[:17] + "..."
+        return f"Take on: {title}  - by - {self.author}"
