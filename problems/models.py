@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
@@ -52,6 +53,7 @@ class Problem(models.Model):
     job_role = models.CharField(max_length=100)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='problems')
+    featured_image = CloudinaryField('image', default='placeholder')
     # Problem details
     pain_level = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)],

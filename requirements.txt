@@ -4,12 +4,14 @@ certifi==2026.1.4
 cffi==2.0.0
 charset-normalizer==3.4.4
 click==8.3.1
+cloudinary==1.36.0
 colorama==0.4.6
 crispy-bootstrap5==0.7
 cryptography==46.0.5
 cssbeautifier==1.15.4
 defusedxml==0.7.1
 dj-database-url==0.5.0
+dj3-cloudinary-storage==0.0.6
 Django==4.2.28
 django-allauth==0.57.2
 django-crispy-forms==2.5
@@ -36,6 +38,6 @@ six==1.17.0
 sqlparse==0.5.5
 tqdm==4.67.3
 tzdata==2025.3
-urllib3==2.6.3
+urllib3==1.26.20
 webencodings==0.5.1
 whitenoise==6.5.0
