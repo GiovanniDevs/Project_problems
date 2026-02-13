@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
-from .models import Problem
+from django.http import HttpResponseRedirect
+from .models import Problem, Take
 from .forms import TakeForm
 
 # Create your views here.
@@ -57,3 +58,43 @@ def problem_detail(request, slug):
             "take_form": take_form,
         },
     )
+
+
+def take_edit(request, slug, take_id):
+    # view to edit Takes
+
+    if request.method == "POST":
+        queryset = Problem.objects.filter(status='public')
+        problem = get_object_or_404(queryset, slug=slug)
+        take = get_object_or_404(Take, pk=take_id)
+        take_form = TakeForm(data=request.POST, instance=take)
+
+        if take_form.is_valid() and take.author == request.user:
+            take = take_form.save(commit=False)
+            take.problem = problem
+            take.approved = False
+            take.save()
+            messages.add_message(request, messages.SUCCESS, 'Take Updated!')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 'Error updating take!')
+
+    return HttpResponseRedirect(reverse('problem_detail', args=[slug]))
+
+
+def take_delete(request, slug, take_id):
+    """
+    view to delete take
+    """
+    queryset = Problem.objects.filter(status='public')
+    problem = get_object_or_404(queryset, slug=slug)
+    take = get_object_or_404(Take, pk=take_id)
+
+    if take.author == request.user:
+        take.delete()
+        messages.add_message(request, messages.SUCCESS, 'Take deleted!')
+    else:
+        messages.add_message(request, messages.ERROR,
+                             'You can only delete your own Takes!')
+
+    return HttpResponseRedirect(reverse('problem_detail', args=[slug]))

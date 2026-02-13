@@ -48,16 +48,20 @@
                 <h3>Takes:</h3>
                 <div class="card-body">
                     <!-- We want a for loop inside the empty control tags
-          to iterate through each comment in comments -->
+                         to iterate through each comment in comments -->
                     {% for take in takes %}
                         <div class="p-2 comments {% if not take.status == 'public' and take.author == user %} faded{% elif not take.status == 'public' %} d-none{% endif %}">
                             <p class="font-weight-bold">
                                 {{ take.author }}
                                 <span class="font-weight-normal">{{ take.created_date }}</span> wrote:
                             </p>
-                            <div id="comment{{ take.id }}">{{ take.description | linebreaks }}</div>
+                            <div id="take{{ take.id }}">{{ take.description | linebreaks }}</div>
                             {% if not take.status == 'public' and take.author == user %}
                                 <p class="approval">This take is awaiting approval</p>
+                            {% endif %}
+                            {% if user.is_authenticated and take.author == user %}
+                                <button class="btn btn-delete" take_id="{{ take.id }}">Delete</button>
+                                <button class="btn btn-edit" take_id="{{ take.id }}">Edit</button>
                             {% endif %}
                         </div>
                         <!-- Our for loop ends here -->
@@ -70,7 +74,7 @@
                     {% if user.is_authenticated %}
                         <h3>Leave a Take:</h3>
                         <p>Posting as: {{ user.username }}</p>
-                        <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                        <form id="takeForm" method="post" style="margin-top: 1.3em;">
                             {{ take_form | crispy }}
                             {% csrf_token %}
                             <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
@@ -82,4 +86,33 @@
             </div>
         </div>
     </div>
+    <!-- Delete confirmation modal -->
+    <div class="modal fade"
+         id="deleteModal"
+         tabindex="-1"
+         aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete take?</h5>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete your take?
+                    This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
+{% block extras %}
+    <script src="{% static 'js/takes.js' %}"></script>
+{% endblock extras %}
