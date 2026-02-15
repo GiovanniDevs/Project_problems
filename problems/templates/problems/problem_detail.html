@@ -30,6 +30,12 @@
                     <div class="card-text">{{ problem.workaround | safe }}</div>
                 </div>
             </div>
+            <div class="col-12">
+                {% if user.is_authenticated and user == problem.author %}
+                    <a href="{% url 'edit_problem' problem.slug %}"
+                       class="btn btn-edit btn-sm">Edit Problem</a>
+                {% endif %}
+            </div>
         </div>
         <!-- Displaying count of comments -->
         <div class="row">

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Take
+from .models import Take, Problem
 
 
 class TakeForm(forms.ModelForm):
@@ -32,4 +32,25 @@ class TakeForm(forms.ModelForm):
         return description
 
 
-class
+class ProblemForm(forms.ModelForm):
+    class Meta:
+        model = Problem
+        fields = ('title',
+                  'description',
+                  'industry',
+                  'job_role',
+                  'pain_level',
+                  'frequency',
+                  'affected_people',
+                  'workaround',
+                  'contact_info',
+                  'show_contact',
+                  'is_solved',)
+
+    def clean_description(self):
+        description = self.cleaned_data.get('description', '')
+        if len(description) < 50:
+            raise forms.ValidationError(
+                'Description must be at least 50 characters long.'
+            )
+        return description

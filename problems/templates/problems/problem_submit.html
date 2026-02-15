@@ -1,0 +1,20 @@
+{% extends 'frame.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 my-5">
+                <h2>Submit a new Problem</h2>
+                <p>a short guideline on how to submit a ne problem</p>
+                <!-- add your form here. Your submit button should
+have the classes of btn, btn-secondary -->
+                <form method="post">
+                    {{ contact_form | crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-secondary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

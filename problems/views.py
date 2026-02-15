@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.utils.text import slugify
 from django.http import HttpResponseRedirect
+from django.utils.crypto import get_random_string
+
 from .models import Problem, Take
-from .forms import TakeForm
+from .forms import TakeForm, ProblemForm
 
 # Create your views here.
 
@@ -97,4 +101,86 @@ def take_delete(request, slug, take_id):
         messages.add_message(request, messages.ERROR,
                              'You can only delete your own Takes!')
 
+    return HttpResponseRedirect(reverse('problem_detail', args=[slug]))
+
+
+@login_required
+def problem_submit(request):
+    if request.method == "POST":
+        problem_form = ProblemForm(data=request.POST)
+        if problem_form.is_valid():
+            problem = problem_form.save(commit=False)
+            problem.author = request.user        # attach logged-in user
+            problem.slug = slugify(problem.title)  # auto-generate slug
+            while Problem.objects.filter(slug=problem.slug).exists():
+                problem.slug = f"{slugify(problem.title)}-{get_random_string(5)}"
+            problem.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Problem submitted and awaiting approval'
+            )
+            # redirect after success
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        problem_form = ProblemForm()
+
+    return render(
+        request,
+        "problems/problem_submit.html",
+        {"problem_form": problem_form},
+    )
+
+
+@login_required
+def problem_edit(request, slug):
+    """View to edit a problem - only the author can edit."""
+    problem = get_object_or_404(Problem, slug=slug)
+
+    if problem.author != request.user:
+        messages.add_message(request, messages.ERROR,
+                             'You can only edit your own problems!')
+        return HttpResponseRedirect(reverse('problem_detail', args=[slug]))
+
+    if request.method == "POST":
+        problem_form = ProblemForm(data=request.POST, instance=problem)
+        if problem_form.is_valid():
+            problem = problem_form.save(commit=False)
+            problem.author = request.user
+            # Reset to draft so admin re-approves after edits
+            problem.status = 'draft'
+            problem.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Problem updated and awaiting re-approval'
+            )
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        problem_form = ProblemForm(instance=problem)
+
+    return render(
+        request,
+        "problems/edit_problem.html",
+        {
+            "problem_form": problem_form,
+            "problem": problem
+        },
+    )
+
+
+@login_required
+def problem_delete(request, slug):
+    """View to delete a problem - only the author can delete."""
+    problem = get_object_or_404(Problem, slug=slug)
+
+    if problem.author != request.user:
+        messages.add_message(request, messages.ERROR,
+                             'You can only delete your own problems!')
+        return HttpResponseRedirect(reverse('problem_detail', args=[slug]))
+
+    if request.method == "POST":
+        problem.delete()
+        messages.add_message(request, messages.SUCCESS, 'Problem deleted!')
+        return HttpResponseRedirect(reverse('home'))
+
+    # If GET, redirect back (deletion should be POST for safety)
     return HttpResponseRedirect(reverse('problem_detail', args=[slug]))

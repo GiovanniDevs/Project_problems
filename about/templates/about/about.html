@@ -37,7 +37,7 @@
                 <!-- add your form here. Your submit button should
 have the classes of btn, btn-secondary -->
                 <form method="post">
-                    {{ contact_form | crispy }}
+                    {{ problem_form | crispy }}
                     {% csrf_token %}
                     <button class="btn btn-secondary" type="submit">Submit</button>
                 </form>
