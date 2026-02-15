@@ -1,5 +1,5 @@
-from .models import Take
 from django import forms
+from .models import Take
 
 
 class TakeForm(forms.ModelForm):
@@ -30,3 +30,6 @@ class TakeForm(forms.ModelForm):
         # This is the value that gets used later when you call take_form.save() in your view —
         # Django reads from cleaned_data to populate the model fields.
         return description
+
+
+class

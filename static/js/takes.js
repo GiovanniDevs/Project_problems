@@ -20,7 +20,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 
 for (let button of editButtons) {
   button.addEventListener("click", (e) => {
-    let takeId = e.target.getAttribute("take_id");
+    let takeId = e.target.getAttribute("data-take_id");
     let takeContent = document.getElementById(`take${takeId}`).innerText;
     takeText.value = takeContent;
     submitButton.innerText = "Update";
@@ -40,7 +40,7 @@ for (let button of editButtons) {
  */
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
-    let takeId = e.target.getAttribute("take_id");
+    let takeId = e.target.getAttribute("data-take_id");
     deleteConfirm.href = `delete_take/${takeId}`;
     deleteModal.show();
   });

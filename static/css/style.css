@@ -77,6 +77,10 @@ body {
   overflow: hidden;
 }
 
+.about-image {
+  width: 75%;
+}
+
 .masthead-image:after {
   content: "";
   position: absolute;
