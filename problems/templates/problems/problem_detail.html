@@ -55,23 +55,27 @@
                 <div class="card-body">
                     <!-- We want a for loop inside the empty control tags
                          to iterate through each comment in comments -->
-                    {% for take in takes %}
-                        <div class="p-2 comments {% if not take.status == 'public' and take.author == user %} faded{% elif not take.status == 'public' %} d-none{% endif %}">
-                            <p class="font-weight-bold">
-                                {{ take.author }}
-                                <span class="font-weight-normal">{{ take.created_date }}</span> wrote:
-                            </p>
-                            <div id="take{{ take.id }}">{{ take.description | linebreaks }}</div>
-                            {% if not take.status == 'public' and take.author == user %}
-                                <p class="approval">This take is awaiting approval</p>
-                            {% endif %}
-                            {% if user.is_authenticated and take.author == user %}
-                                <button class="btn btn-delete" data-take_id="{{ take.id }}">Delete</button>
-                                <button class="btn btn-edit" data-take_id="{{ take.id }}">Edit</button>
-                            {% endif %}
-                        </div>
-                        <!-- Our for loop ends here -->
-                    {% endfor %}
+                    {% if not takes %}
+                        <p>No Takes yet</p>
+                    {% else %}
+                        {% for take in takes %}
+                            <div class="p-2 comments {% if not take.status == 'public' and take.author == user %} faded{% elif not take.status == 'public' %} d-none{% endif %}">
+                                <p class="font-weight-bold">
+                                    {{ take.author }}
+                                    <span class="font-weight-normal">{{ take.created_date }}</span> wrote:
+                                </p>
+                                <div id="take{{ take.id }}">{{ take.description | linebreaks }}</div>
+                                {% if not take.status == 'public' and take.author == user %}
+                                    <p class="approval">This take is awaiting approval</p>
+                                {% endif %}
+                                {% if user.is_authenticated and take.author == user %}
+                                    <button class="btn btn-delete" data-take_id="{{ take.id }}">Delete</button>
+                                    <button class="btn btn-edit" data-take_id="{{ take.id }}">Edit</button>
+                                {% endif %}
+                            </div>
+                            <!-- Our for loop ends here -->
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             <!-- Creating New Comments -->
