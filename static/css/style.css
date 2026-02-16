@@ -4,12 +4,14 @@
   --background-l: #303030;
   --primary: #283a4c;
   --m-primary: #2f3b47;
+  --mm-primary: #36424e;
   --secondary: #648cb3;
   --accent: #c2ef67;
 }
 
 body {
   background-color: var(--background);
+  color: var(--text);
 }
 
 .brand {
@@ -20,6 +22,10 @@ body {
 }
 
 /* general styling */
+.bolder {
+  font-weight: 600;
+}
+
 .text-white {
   color: var(--text);
 }
@@ -43,8 +49,8 @@ body {
 }
 
 .state {
-  background-color: var(--secondary);
-  color: var(--text); /* text color */
+  background-color: white;
+  color: #283a4c; /* text color */
   font-weight: 600;
 }
 
@@ -95,9 +101,18 @@ body {
 .main-bg {
   background-color: var(--background);
 }
+/*  Index page styling */
 
 .card {
-  background-color: var(--primary);
+  background-color: rgb(41, 41, 41);
+  border-width: 0 0 0 2px;
+  border-color: var(--accent);
+}
+
+.list-group-item {
+  background-color: var(--mm-primary);
+  color: white;
+  border: none;
 }
 
 .image-container {

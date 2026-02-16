@@ -4,40 +4,48 @@
     <!-- index.html content starts here -->
     <div class="container-fluid">
         <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-5 display-md-3 fw-bold">
+                    Explore <span class="gradient">Problems</span>
+                </h1>
+                <h1 class="display-5 fw-bold">
+                    and add your <span class="outline">Take</span>
+                </h1>
+                <p class="lead mt-3">
+                    A two-sided platform where workers share real problems
+                    and entrepreneurs discover ideas worth building.
+                </p>
+            </div>
             <!-- Blog Entries Column -->
             <div class="col-12 mt-3 left">
                 <div class="row">
                     {% for prob in problem_list %}
-                        <div class="col-md-4">
-                            <div class="card mb-4">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="card mx-3 mb-4">
+                                {% comment %} {% if "placeholder" in prob.featured_image.url %}
+                                    <img class="card-img-top" src="{% static 'images/problem.png' %}" alt="placeholder image">
+                                {% else %}
+                                    <img class="card-img-top" src=" {{ prob.featured_image.url }}" alt="{{ prob.title }}">
+                                {% endif %} {% endcomment %}
                                 <div class="card-body">
-                                    <div class="image-container">
-                                        {% if "placeholder" in prob.featured_image.url %}
-                                            <img class="card-img-top"
-                                                 src="{% static 'images/problem.png' %}"
-                                                 alt="placeholder image">
-                                        {% else %}
-                                            <img class="card-img-top"
-                                                 src=" {{ prob.featured_image.url }}"
-                                                 alt="{{ prob.title }}">
-                                        {% endif %}
-                                        <div class="image-flash">
-                                            <p class="author">Author: {{ prob.author }}</p>
-                                        </div>
-                                    </div>
                                     <a href="{% url 'problem_detail' prob.slug %}" class="prob-link">
-                                        <h2 class="card-title">{{ prob.title }}</h2>
-                                        <p class="card-text">{{ prob.description|truncatewords:20 }}</p>
+                                        <h5 class="card-title">{{ prob.title|truncatechars:40 }}</h5>
+                                        <p class="card-text">{{ prob.description|truncatewords:40 }}</p>
                                     </a>
-                                    <hr />
-                                    <p class="card-text text-muted h6">{{ prob.created_on }}</p>
                                 </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <b>Author: </b>{{ prob.author }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Industry: </b>{{ prob.industry }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Created on: </b>{{ prob.created_date }}
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        {% if forloop.counter|divisibleby:3 %}
-                        </div>
-                        <div class="row">
-                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
