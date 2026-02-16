@@ -8,6 +8,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 mt-3 offset-md-2">
+        {% if redirect_field_value == submit_url %}
+          <div class="alert alert-info my-2" role="alert">{% trans "Please log in to submit a problem." %}</div>
+        {% endif %}
         <h3>{% trans "Sign In" %}</h3>
         <p>
           {% blocktrans %}Welcome back to the Problem Solutions. To leave a Take or submit a Problem, please log in. If
