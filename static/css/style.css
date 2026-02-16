@@ -1,5 +1,13 @@
+:root {
+  --text: #e1e1e1;
+  --background: #222222;
+  --primary: #283a4c;
+  --secondary: #648cb3;
+  --accent: #c2ef67;
+}
+
 body {
-  background-color: #f9fafc;
+  background-color: var(--background);
 }
 
 .brand {
@@ -7,6 +15,11 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   color: #4a4a4f;
+}
+
+.hero-img {
+  object-fit: cover;
+  filter: brightness(0.5);
 }
 
 .red-o {
@@ -26,12 +39,11 @@ body {
 }
 
 .main-bg {
-  background-color: #f9fafc;
+  background-color: var(--background);
 }
 
 .card {
-  border: none;
-  background-color: transparent;
+  background-color: var(--primary);
 }
 
 .image-container {
@@ -43,7 +55,7 @@ body {
   bottom: 5%;
   min-width: 30%;
   left: -2px;
-  background-color: #188181;
+  background-color: var(--accent);
 }
 
 .scale {
@@ -52,7 +64,7 @@ body {
 }
 
 .author {
-  color: white;
+  color: var(--primary);
   margin: 4px;
   text-transform: uppercase;
 }
@@ -95,9 +107,9 @@ body {
   z-index: 100;
 }
 
-.post-link {
+.prob-link {
   text-decoration: none;
-  color: #445261;
+  color: var(--text);
 }
 
 .post-link:hover,

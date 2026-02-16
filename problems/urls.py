@@ -1,8 +1,10 @@
 from . import views
 from django.urls import path
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', views.ProblemList.as_view(), name='home'),
+    path('browse/', views.ProblemList.as_view(), name='browse'),
+    path('', TemplateView.as_view(template_name='problems/home.html'), name='home'),
     path('submit/', views.problem_submit, name='problem_submit'),
     path('<slug:slug>/', views.problem_detail, name='problem_detail'),
     path('<slug:slug>/edit_take/<int:take_id>',
