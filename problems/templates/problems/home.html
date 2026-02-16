@@ -9,11 +9,64 @@
              class="w-100 h-100 hero-img"
              alt="Hero background image">
         <div class="position-absolute top-50 start-50 translate-middle w-100 px-3">
-            <h1 class="display-5 display-md-3 fw-bold">Where Problems Meet Solutions</h1>
+            <h1 class="display-5 display-md-3 fw-bold">
+                Where <span class="gradient">Problems</span>
+            </h1>
+            <h1 class="display-5 display-md-3 fw-bold">
+                meets <span class="outline">Solutions</span>
+            </h1>
             <p class="lead mt-3">
                 A two-sided platform where workers share real problems
                 and entrepreneurs discover ideas worth building.
             </p>
+        </div>
+    </div>
+    <div class="container-fluid p-3 my-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div>
+                    <img src="{% static 'images/default.jpg' %}"
+                         class="card-img-top home-card"
+                         alt="Card image placeholder">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2 class="fw-bold mb-3 accent">Share Your Problem</h2>
+                <p class="fs-5 text-white">
+                    Share your painful problem that is haunting you,
+                    your business or even your industry.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-2 mybg-mprimary">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-4">
+                <h2 class="fw-bold mb-3 accent">Add your Take</h2>
+                <p class="fs-5 text-white">Add your experience to problems already posted by others!</p>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div>
+                    <img src="{% static 'images/default.jpg' %}"
+                         class="card-img-top home-card"
+                         alt="Card image placeholder">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-3 my-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div>
+                    <img src="{% static 'images/default.jpg' %}"
+                         class="card-img-top home-card"
+                         alt="Card image placeholder">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2 class="fw-bold mb-3 accent">Find Solutions</h2>
+                <p class="fs-5 text-white">Get connected with business and other solutions makers or just browse others workaraunds</p>
+            </div>
         </div>
     </div>
 {% endblock content %}

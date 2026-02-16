@@ -1,7 +1,9 @@
 :root {
   --text: #e1e1e1;
   --background: #222222;
+  --background-l: #303030;
   --primary: #283a4c;
+  --m-primary: #2f3b47;
   --secondary: #648cb3;
   --accent: #c2ef67;
 }
@@ -17,9 +19,61 @@ body {
   color: #4a4a4f;
 }
 
+/* general styling */
+.text-white {
+  color: var(--text);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.mybg-mprimary {
+  background-color: var(--m-primary);
+}
+
+.mybg-l {
+  background-color: var(--background-l);
+}
+
+/* NavBar  */
+
+.navbar {
+  border-bottom: 1px solid #5a5a5a;
+}
+
+.state {
+  background-color: var(--secondary);
+  color: var(--text); /* text color */
+  font-weight: 600;
+}
+
+/* Homepage styling */
+.gradient {
+  background: linear-gradient(120deg, var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.outline {
+  font-style: italic;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--text);
+  color: transparent;
+}
+/* elements styling */
+
+.container {
+  border-radius: 10px;
+}
 .hero-img {
   object-fit: cover;
   filter: brightness(0.5);
+}
+
+.home-card {
+  border-radius: 5px;
 }
 
 .red-o {
