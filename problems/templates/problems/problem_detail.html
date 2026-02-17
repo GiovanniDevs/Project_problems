@@ -2,49 +2,134 @@
 {% block content %}
     {% load static %}
     {% load crispy_forms_tags %}
-    <div class="masthead">
-        <div class="container">
-            <div class="row g-0">
-                <div class="col-md-6 masthead-text">
-                    <!-- Post title goes in these h1 tags -->
-                    <h1 class="post-title">{{ problem.title }}</h1>
-                    <!-- Post author goes before the | the post's created date goes after -->
-                    <p class="post-subtitle">{{ problem.author }} | {{ problem.created_date }}</p>
+    <!-- Problem Header -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <h1 class="display-5 fw-bold mb-2">{{ problem.title }}</h1>
+                <p class="muted-white mb-4">
+                    Posted by <span class="accent">{{ problem.author }}</span> | {{ problem.created_date }}
+                </p>
+            </div>
+        </div>
+        <!-- Problem Meta Info -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Industry</small>
+                                <p class="fw-bold mb-0 accent">{{ problem.get_industry_display }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Pain Level</small>
+                                <p class="fw-bold mb-0 accent">{{ problem.pain_level }} / 10</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Affected People</small>
+                                <p class="fw-bold mb-0 accent">{{ problem.get_affected_people_display }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Job Role</small>
+                                <p class="fw-bold mb-0 accent">{{ problem.job_role }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-none d-md-block col-md-6 masthead-image">
-                    <img src="{% static 'images/default.jpg' %}"
-                         class="scale"
-                         alt="placeholder">
+                <!-- Additional meta row -->
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Frequency</small>
+                                <p class="fw-bold mb-0 accent">{{ problem.get_frequency_display }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Status</small>
+                                <p class="fw-bold mb-0">
+                                    {% if problem.is_solved %}
+                                        <span class="text-success">Solved</span>
+                                    {% else %}
+                                        <span class="text-warning">Unsolved</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="card mybg-l">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Takes</small>
+                                <p class="fw-bold mb-0 accent">
+                                    <i class="far fa-comments"></i> {{ takes_count }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="card mybg-l">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Contact</small>
+                                <p class="fw-bold mb-0 accent">
+                                    {% if problem.contact_info %}
+                                        {{ problem.contact_info }}
+                                    {% else %}
+                                        None Shared
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col card mb-4  mt-3 left  top">
-                <div class="card-body">
-                    <!-- The post content goes inside the card-text. -->
-                    <!-- Use the | safe filter inside the template tags -->
-                    <div class="card-text">{{ problem.description | safe }}</div>
-                    <h2 class="p-3">Current Workaround</h2>
-                    <div class="card-text">{{ problem.workaround | safe }}</div>
+        <!-- Problem Description & Workaround -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="card mybg-l mb-4">
+                    <div class="card-body">
+                        <h2 class="h4 fw-bold accent mb-3">Problem Description</h2>
+                        <div class="card-text muted-white">{{ problem.description | safe }}</div>
+                    </div>
                 </div>
+                {% if problem.workaround %}
+                    <div class="card mybg-l mb-4">
+                        <div class="card-body">
+                            <h2 class="h4 fw-bold accent mb-3">Current Workaround</h2>
+                            <div class="card-text muted-white">{{ problem.workaround | safe }}</div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-            <div class="col-12">
+        </div>
+        <!-- Edit button -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 mb-3">
                 {% if user.is_authenticated and user == problem.author %}
                     <a href="{% url 'edit_problem' problem.slug %}"
                        class="btn btn-edit btn-sm">Edit Problem</a>
                 {% endif %}
             </div>
         </div>
-        <!-- Displaying count of comments -->
-        <div class="row">
-            <div class="col-12">
-                <strong class="text-secondary">
-                    <i class="far fa-comments"></i> {{ takes_count }}
-                </strong>
-            </div>
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
                 <hr>
             </div>
         </div>
@@ -59,89 +144,74 @@
                         <p>No Takes yet</p>
                     {% else %}
                         {% for take in takes %}
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'images/default.jpg' %}"
-                                    class="card-img-top"
-                                    alt="Take decorating image>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                <div class="card mx-3 mb-4">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">An item</li>
-                                        <li class="list-group-item">A second item</li>
-                                        <li class="list-group-item">A third item</li>
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
+                                        <h5 class="card-title">{{ take.title|truncatechars:40 }}</h5>
+                                        <ul class="list-group my-3">
+                                            <li class="list-group-item">
+                                                <b>Author: </b>{{ take.author }}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Industry: </b>{{ take.industry }}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Pain Level: </b>{{ take.pain_level }}
+                                            </li>
+                                        </ul>
+                                        <p class="card-text muted-white">{{ take.description|truncatewords:40 }}</p>
                                     </div>
                                 </div>
-                                <div class="p-2 comments {% if not take.status == 'public' and take.author == user %} faded{% elif not take.status == 'public' %} d-none{% endif %}">
-                                    <p class="font-weight-bold">
-                                        {{ take.author }}
-                                        <span class="font-weight-normal">{{ take.created_date }}</span> wrote:
-                                    </p>
-                                    <div>{{ take.pain_level }}</div>
-                                    <div id="take{{ take.id }}">{{ take.description | linebreaks }}</div>
-                                    {% if not take.status == 'public' and take.author == user %}
-                                        <p class="approval">This take is awaiting approval</p>
-                                    {% endif %}
-                                    {% if user.is_authenticated and take.author == user %}
-                                        <button class="btn btn-delete" data-take_id="{{ take.id }}">Delete</button>
-                                        <button class="btn btn-edit" data-take_id="{{ take.id }}">Edit</button>
-                                    {% endif %}
-                                </div>
-                                <!-- Our for loop ends here -->
-                            {% endfor %}
-                        {% endif %}
-                    </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-                <!-- Creating New Takes -->
-                <div class="col-md-4 mb-4 mt-3">
-                    <div class="card-body">
-                        {% if user.is_authenticated %}
-                            <h3>Leave a Take:</h3>
-                            <p>Posting as: {{ user.username }}</p>
-                            <form id="takeForm" method="post" style="margin-top: 1.3em;">
-                                {{ take_form | crispy }}
-                                {% csrf_token %}
-                                <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
-                            </form>
-                        {% else %}
-                            <p>Log in to leave a Take</p>
-                        {% endif %}
-                    </div>
+            </div>
+            <!-- Creating New Takes -->
+            <div class="col-md-4 mb-4 mt-3">
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                        <h3>Leave a Take:</h3>
+                        <p>Posting as: {{ user.username }}</p>
+                        <form id="takeForm" method="post" style="margin-top: 1.3em;">
+                            {{ take_form | crispy }}
+                            {% csrf_token %}
+                            <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        </form>
+                    {% else %}
+                        <p>Log in to leave a Take</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        <!-- Delete confirmation modal -->
-        <div class="modal fade"
-             id="deleteModal"
-             tabindex="-1"
-             aria-labelledby="deleteModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Delete take?</h5>
-                        <button type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete your take?
-                        This action cannot be undone.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
-                    </div>
+    </div>
+    <!-- Delete confirmation modal -->
+    <div class="modal fade"
+         id="deleteModal"
+         tabindex="-1"
+         aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete take?</h5>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete your take?
+                    This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
-    {% endblock content %}
-    {% block extras %}
-        <script src="{% static 'js/takes.js' %}"></script>
-    {% endblock extras %}
+    </div>
+{% endblock content %}
+{% block extras %}
+    <script src="{% static 'js/takes.js' %}"></script>
+{% endblock extras %}

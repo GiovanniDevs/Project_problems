@@ -14,6 +14,10 @@ body {
   color: var(--text);
 }
 
+.muted-white {
+  color: rgba(255, 255, 255, 0.753);
+}
+
 .brand {
   font-family: Lato, sans-serif;
   font-size: 1.4rem;
