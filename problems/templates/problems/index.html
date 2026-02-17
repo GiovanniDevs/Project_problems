@@ -20,7 +20,7 @@
                 <div class="row">
                     {% for prob in problem_list %}
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="card mx-3 mb-4">
+                            <div class="index-card card mx-3 mb-4">
                                 {% comment %} {% if "placeholder" in prob.featured_image.url %}
                                     <img class="card-img-top" src="{% static 'images/problem.png' %}" alt="placeholder image">
                                 {% else %}
@@ -34,7 +34,7 @@
                                                 <b>Author: </b>{{ prob.author }}
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Industry: </b>{{ prob.industry }}
+                                                <b>Industry: </b>{{ prob.get_industry_display }}
                                             </li>
                                             <li class="list-group-item">
                                                 <b>Pain Level: </b>{{ prob.pain_level }}

@@ -6,9 +6,9 @@ class TakeForm(forms.ModelForm):
     class Meta:
         model = Take
         fields = ('pain_level',
-                  'description',
                   'frequency',
-                  'affected_people',)
+                  'affected_people',
+                  'description',)
 
     # The clean_description method is a Django convention.
     # Any method named clean_<fieldname> on a ModelForm automatically runs as

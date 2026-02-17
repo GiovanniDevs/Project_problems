@@ -144,7 +144,7 @@
                         <p>No Takes yet</p>
                     {% else %}
                         {% for take in takes %}
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            {% comment %} <div class="col-12 col-sm-6">
                                 <div class="card mx-3 mb-4">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ take.title|truncatechars:40 }}</h5>
@@ -162,6 +162,37 @@
                                         <p class="card-text muted-white">{{ take.description|truncatewords:40 }}</p>
                                     </div>
                                 </div>
+                            </div> {% endcomment %}
+                            <div class="col-12 col-sm-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body d-flex flex-column">
+                                        <!-- Author & Date -->
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="fw-bold accent">{{ take.author }}</span>
+                                            <small class="muted-white">{{ take.created_date }}</small>
+                                        </div>
+                                        <!-- Description -->
+                                        <p class="card-text muted-white flex-grow-1">{{ take.description }}</p>
+                                        <!-- Meta fields -->
+                                        <div class="d-flex flex-wrap gap-2 mt-auto">
+                                            <span class="badge bg-secondary">Pain: {{ take.pain_level }}/10</span>
+                                            <span class="badge bg-secondary">{{ take.get_frequency_display }}</span>
+                                            <span class="badge bg-secondary">{{ take.get_affected_people_display }}</span>
+                                        </div>
+                                        <!-- Actions (only for take author) -->
+                                        {% if user.is_authenticated and take.author == user %}
+                                            <div class="mt-3">
+                                                <button class="btn btn-edit btn-sm" data-take_id="{{ take.id }}">Edit</button>
+                                                <button class="btn btn-delete btn-sm" data-take_id="{{ take.id }}">Delete</button>
+                                            </div>
+                                        {% endif %}
+                                        {% if not take.status == 'public' and take.author == user %}
+                                            <p class="approval mt-2 mb-0">
+                                                <small>This take is awaiting approval</small>
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </div>
                         {% endfor %}
                     {% endif %}
@@ -173,7 +204,7 @@
                     {% if user.is_authenticated %}
                         <h3>Leave a Take:</h3>
                         <p>Posting as: {{ user.username }}</p>
-                        <form id="takeForm" method="post" style="margin-top: 1.3em;">
+                        <form id="takeForm" method="post"  style="margin-top: 1.3em">
                             {{ take_form | crispy }}
                             {% csrf_token %}
                             <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>

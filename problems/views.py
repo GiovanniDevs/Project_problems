@@ -49,6 +49,11 @@ def problem_detail(request, slug):
                 'Take submitted and awaiting approval'
             )
             take_form = TakeForm()  # only reset AFTER successful save
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                'Error submitting take. Please check the form and try again.'
+            )
     else:
         take_form = TakeForm()
 
