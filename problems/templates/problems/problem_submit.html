@@ -2,6 +2,95 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+    <!-- Header Section -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 text-center mb-4">
+                <h1 class="display-5 fw-bold">
+                    Submit a <span class="gradient">Problem</span>
+                </h1>
+                <p class="h5 muted-white mt-3">
+                    Share a real workplace problem you're facing. Once submitted, it will be reviewed before going public.
+                </p>
+            </div>
+        </div>
+        <!-- Guidelines Section -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Step 1</small>
+                                <p class="fw-bold mb-0 accent">Describe it</p>
+                                <small class="muted-white">Give a clear title and detailed description (50+ chars)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Step 2</small>
+                                <p class="fw-bold mb-0 accent">Rate the pain</p>
+                                <small class="muted-white">How severe is this problem? (1-10)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Step 3</small>
+                                <p class="fw-bold mb-0 accent">Add context</p>
+                                <small class="muted-white">Industry, frequency, and who's affected</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card mybg-l h-100">
+                            <div class="card-body text-center">
+                                <small class="muted-white text-uppercase">Step 4</small>
+                                <p class="fw-bold mb-0 accent">Submit</p>
+                                <small class="muted-white">Your problem will be reviewed and published</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <hr>
+            </div>
+        </div>
+        <!-- Form Section -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="card mybg-l mb-4">
+                    <div class="card-body">
+                        <h2 class="h4 fw-bold accent mb-3">
+                            <i class="fas fa-edit"></i> Problem Details
+                        </h2>
+                        <p class="muted-white mb-4">
+                            Posting as: <span class="fw-bold accent">{{ user.username }}</span>
+                        </p>
+                        <form class="muted-white" method="post">
+                            {% csrf_token %}
+                            {% crispy problem_form %}
+                            <div class="d-flex gap-2 mt-4">
+                                <button class="btn btn-signup btn-lg" type="submit">Submit Problem</button>
+                                <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% comment %} {% extends 'frame.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 my-5">
@@ -17,4 +106,4 @@ have the classes of btn, btn-secondary -->
             </div>
         </div>
     </div>
-{% endblock content %}
+{% endblock content %} {% endcomment %}

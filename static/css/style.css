@@ -222,9 +222,44 @@ body {
 }
 
 .faded {
-  color: rgb(172, 175, 175);
+  opacity: 0.5;
 }
 
 .approval {
   color: rgb(222, 146, 168);
+}
+
+/* Style form inputs to match dark theme */
+.form-control,
+.form-select {
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid #5a5a5a;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--background);
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(194, 239, 103, 0.25);
+}
+
+.form-label {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.form-check-label {
+  color: var(--text);
+}
+
+.form-check-input {
+  background-color: var(--background);
+  border-color: #5a5a5a;
+}
+
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
 }

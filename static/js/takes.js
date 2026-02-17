@@ -1,5 +1,8 @@
 const editButtons = document.getElementsByClassName("btn-edit");
 const takeText = document.getElementById("id_description");
+const takePain = document.getElementById("id_pain_level");
+const takeAffected = document.getElementById("id_affected_people");
+const takeFrequency = document.getElementById("id_frequency");
 const takeForm = document.getElementById("takeForm");
 const submitButton = document.getElementById("submitButton");
 
@@ -22,7 +25,13 @@ for (let button of editButtons) {
   button.addEventListener("click", (e) => {
     let takeId = e.target.getAttribute("data-take_id");
     let takeContent = document.getElementById(`take${takeId}`).innerText;
+    let getPain = document.getElementById(`pain${takeId}`).innerText;
+    let getFrequency = document.getElementById(`freq${takeId}`).innerText;
+    let getAffected = document.getElementById(`affected${takeId}`).innerText;
     takeText.value = takeContent;
+    takePain.value = getPain;
+    takeFrequency.value = getFrequency;
+    takeAffected.value = getAffected;
     submitButton.innerText = "Update";
     takeForm.setAttribute("action", `edit_take/${takeId}`);
   });

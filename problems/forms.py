@@ -1,4 +1,6 @@
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Field, Div
 from .models import Take, Problem
 
 
@@ -36,16 +38,52 @@ class ProblemForm(forms.ModelForm):
     class Meta:
         model = Problem
         fields = ('title',
-                  'description',
                   'industry',
                   'job_role',
                   'pain_level',
                   'frequency',
                   'affected_people',
+                  'description',
                   'workaround',
                   'contact_info',
                   'show_contact',
                   'is_solved',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False  # We handle <form> in the template
+        self.helper.layout = Layout(
+            # Row 1: Title (full width)
+            Field('title', css_class='mb-3'),
+            # Row 2: Industry + Job Role side by side
+            Div(
+                Field('industry', wrapper_class='col-md-6'),
+                Field('job_role', wrapper_class='col-md-6'),
+                css_class='row',
+            ),
+            # Row 3: Pain Level + Frequency + Affected People
+            Div(
+                Field('pain_level', wrapper_class='col-md-4'),
+                Field('frequency', wrapper_class='col-md-4'),
+                Field('affected_people', wrapper_class='col-md-4'),
+                css_class='row',
+            ),
+            # Row 4: Description (full width)
+            Field('description', rows=7),
+            # Row 5: Workaround (full width)
+            Field('workaround', rows=5),
+            # Row 6: Contact info + checkboxes
+            Div(
+                Field('contact_info', wrapper_class='col-md-6'),
+                Div(
+                    Field('show_contact'),
+                    Field('is_solved'),
+                    css_class='col-md-6 d-flex align-items-end gap-4 mb-3',
+                ),
+                css_class='row',
+            ),
+        )
 
     def clean_description(self):
         description = self.cleaned_data.get('description', '')

@@ -135,7 +135,7 @@
         </div>
         <!-- Displaying Takes -->
         <div class="row">
-            <div class="col-md-8 mb-4  mt-3 ">
+            <div class="col-md-5 mb-4  mt-3 me-auto">
                 <h3>Takes:</h3>
                 <div class="card-body">
                     <!-- We want a for loop inside the empty control tags
@@ -144,27 +144,8 @@
                         <p>No Takes yet</p>
                     {% else %}
                         {% for take in takes %}
-                            {% comment %} <div class="col-12 col-sm-6">
-                                <div class="card mx-3 mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ take.title|truncatechars:40 }}</h5>
-                                        <ul class="list-group my-3">
-                                            <li class="list-group-item">
-                                                <b>Author: </b>{{ take.author }}
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b>Industry: </b>{{ take.industry }}
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b>Pain Level: </b>{{ take.pain_level }}
-                                            </li>
-                                        </ul>
-                                        <p class="card-text muted-white">{{ take.description|truncatewords:40 }}</p>
-                                    </div>
-                                </div>
-                            </div> {% endcomment %}
-                            <div class="col-12 col-sm-6 mb-4">
-                                <div class="card h-100">
+                            <div class="col-12 mb-4">
+                                <div class="card {% if take.status != 'public' and take.author == user %} faded{% elif take.status != 'public' %} d-none{% endif %} h-100">
                                     <div class="card-body d-flex flex-column">
                                         <!-- Author & Date -->
                                         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -172,7 +153,11 @@
                                             <small class="muted-white">{{ take.created_date }}</small>
                                         </div>
                                         <!-- Description -->
-                                        <p class="card-text muted-white flex-grow-1">{{ take.description }}</p>
+                                        <p id="take{{ take.id }}" class="card-text muted-white flex-grow-1">{{ take.description }}</p>
+                                        <!-- Hidden raw values for JS edit -->
+                                        <span id="pain{{ take.id }}" class="d-none">{{ take.pain_level }}</span>
+                                        <span id="freq{{ take.id }}" class="d-none">{{ take.frequency }}</span>
+                                        <span id="affected{{ take.id }}" class="d-none">{{ take.affected_people }}</span>
                                         <!-- Meta fields -->
                                         <div class="d-flex flex-wrap gap-2 mt-auto">
                                             <span class="badge bg-secondary">Pain: {{ take.pain_level }}/10</span>
@@ -199,7 +184,7 @@
                 </div>
             </div>
             <!-- Creating New Takes -->
-            <div class="col-md-4 mb-4 mt-3">
+            <div class="col-md-6 mb-4 p-4 mt-3">
                 <div class="card-body">
                     {% if user.is_authenticated %}
                         <h3>Leave a Take:</h3>
