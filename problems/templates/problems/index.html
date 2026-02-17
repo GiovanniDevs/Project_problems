@@ -4,16 +4,15 @@
     <!-- index.html content starts here -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center mb-4">
                 <h1 class="display-5 display-md-3 fw-bold">
                     Explore <span class="gradient">Problems</span>
                 </h1>
                 <h1 class="display-5 fw-bold">
                     and add your <span class="outline">Take</span>
                 </h1>
-                <p class="lead mt-3">
-                    A two-sided platform where workers share real problems
-                    and entrepreneurs discover ideas worth building.
+                <p class="h4 my-5">
+                    A place to explore real problems and share your take. Add context, suggest a fix, or spot an idea worth building next.
                 </p>
             </div>
             <!-- Blog Entries Column -->
@@ -30,20 +29,20 @@
                                 <div class="card-body">
                                     <a href="{% url 'problem_detail' prob.slug %}" class="prob-link">
                                         <h5 class="card-title">{{ prob.title|truncatechars:40 }}</h5>
+                                        <ul class="list-group my-3">
+                                            <li class="list-group-item">
+                                                <b>Author: </b>{{ prob.author }}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Industry: </b>{{ prob.industry }}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Pain Level: </b>{{ prob.pain_level }}
+                                            </li>
+                                        </ul>
                                         <p class="card-text">{{ prob.description|truncatewords:40 }}</p>
                                     </a>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <b>Author: </b>{{ prob.author }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Industry: </b>{{ prob.industry }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Created on: </b>{{ prob.created_date }}
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     {% endfor %}
