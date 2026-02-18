@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.utils.crypto import get_random_string
 
 from .models import Problem, Take
-from .forms import TakeForm, ProblemForm
+from .forms import TakeForm, ProblemForm, ProblemSubmitForm
 
 # Create your views here.
 
@@ -112,7 +112,7 @@ def take_delete(request, slug, take_id):
 @login_required
 def problem_submit(request):
     if request.method == "POST":
-        problem_form = ProblemForm(data=request.POST)
+        problem_form = ProblemSubmitForm(data=request.POST)
         if problem_form.is_valid():
             problem = problem_form.save(commit=False)
             problem.author = request.user        # attach logged-in user
@@ -126,8 +126,13 @@ def problem_submit(request):
             )
             # redirect after success
             return HttpResponseRedirect(reverse('home'))
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                'Error submitting problem. Please check the form and try again.'
+            )
     else:
-        problem_form = ProblemForm()
+        problem_form = ProblemSubmitForm()
 
     return render(
         request,
@@ -159,6 +164,11 @@ def problem_edit(request, slug):
                 'Problem updated and awaiting re-approval'
             )
             return HttpResponseRedirect(reverse('home'))
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                'Error submitting problem. Please check the form and try again.'
+            )
     else:
         problem_form = ProblemForm(instance=problem)
 

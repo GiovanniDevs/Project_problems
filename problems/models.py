@@ -44,6 +44,19 @@ class Problem(models.Model):
         ('my_industry', 'My industry (hundreds+)'),
     ]
 
+    PAIN_LEVELS = [
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+        (8, '8'),
+        (9, '9'),
+        (10, '10'),
+    ]
+
     # Core fields
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -56,7 +69,8 @@ class Problem(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     # Problem details
     pain_level = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
+        choices=PAIN_LEVELS,
+        default=1,
         help_text="Rate from 1 (minor annoyance) to 10 (critical issue)"
     )
     frequency = models.CharField(
@@ -105,13 +119,27 @@ class Take(models.Model):
         ('public', 'Public'),
     ]
 
+    PAIN_LEVELS = [
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+        (8, '8'),
+        (9, '9'),
+        (10, '10'),
+    ]
+
     # Core fields
     problem = models.ForeignKey(
         Problem, on_delete=models.CASCADE, related_name='takes')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='take_author')
     pain_level = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
+        choices=PAIN_LEVELS,
+        default=1,
         help_text="Rate from 1 (minor annoyance) to 10 (critical issue)"
     )
     frequency = models.CharField(

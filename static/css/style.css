@@ -36,6 +36,10 @@ body {
   color: var(--text);
 }
 
+.mytext-primary {
+  color: var(--secondary);
+}
+
 .accent {
   color: var(--accent);
 }
@@ -46,6 +50,10 @@ body {
 
 .mybg-l {
   background-color: var(--background-l);
+}
+
+.form-text {
+  color: var(--muted-white);
 }
 
 /* NavBar  */
@@ -262,4 +270,10 @@ body {
 .form-check-input:checked {
   background-color: var(--accent);
   border-color: var(--accent);
+}
+
+@media (min-width: 992px) {
+  .card-clamp {
+    max-width: 400px;
+  }
 }

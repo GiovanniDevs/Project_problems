@@ -62,6 +62,22 @@
                 <hr>
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="card mybg-l mb-4">
+                    <div class="card-body">
+                        <p class="text-white">
+                            <b>NOTE: </b>Help us understand your problem so others can help solve it. Be as descriptive as possible, explain not just what's frustrating, but why it matters and who it affects. Share your current workaround (even if it's messy or inefficient) so solution makers can understand what you've already tried. Include specific details about how often this happens, the context where it occurs, and any patterns you've noticed. The more information you provide, the easier it will be for entrepreneurs and problem solvers to connect with you, understand the real pain point, and potentially build something that genuinely helps. Your detailed problem description could be the inspiration for someone's next business idea.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <hr>
+            </div>
+        </div>
         <!-- Form Section -->
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
@@ -76,6 +92,9 @@
                         <form class="muted-white" method="post">
                             {% csrf_token %}
                             {% crispy problem_form %}
+                            <p>
+                                <b>Note:</b> share your email if you want potential solutions to get in touch with you.
+                            </p>
                             <div class="d-flex gap-2 mt-4">
                                 <button class="btn btn-signup btn-lg" type="submit">Submit Problem</button>
                                 <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg">Cancel</a>

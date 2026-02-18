@@ -92,3 +92,8 @@ class ProblemForm(forms.ModelForm):
                 'Description must be at least 50 characters long.'
             )
         return description
+
+
+class ProblemSubmitForm(ProblemForm):
+    class Meta(ProblemForm.Meta):
+        exclude = ('is_solved',)

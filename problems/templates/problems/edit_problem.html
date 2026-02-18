@@ -3,23 +3,53 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="container mt-5">
-        <div class="row justify-content-center">
+        {% comment %} <div class="row justify-content-center">
             <div class="col-12 col-md-8 my-5">
-                <h2>Edit Problem: {{ problem.title }}</h2>
-                <p class="text-muted">Note: Editing will set the problem back to draft status for admin re-approval.</p>
+                <h2>
+                    <span class="mytext-primary">Edit Problem:</span> {{ problem.title }}
+                </h2>
+                <p class="muted-white">Note: Editing will set the problem back to draft status for admin re-approval.</p>
                 <form method="post">
-                    {{ problem_form | crispy }}
+                    {% crispy problem_form %}
                     {% csrf_token %}
                     <button class="btn btn-secondary" type="submit">Update Problem</button>
-                    <a href="{% url 'problem_detail' problem.slug %}"
-                       class="btn btn-outline-secondary">Cancel</a>
+                    <a href="{% url 'problem_detail' problem.slug %}" class="btn btn-outline-secondary">Cancel</a>
                 </form>
                 <hr>
                 <h3 class="text-danger">Danger Zone</h3>
                 <p>Deleting a problem will also remove all associated takes. This cannot be undone.</p>
-                <button class="btn btn-danger"
-                        data-bs-toggle="modal"
-                        data-bs-target="#deleteProblemModal">Delete Problem</button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProblemModal">Delete Problem</button>
+            </div>
+        </div> {% endcomment %}
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="card mybg-l mb-4 ">
+                    <div class="card-body text-white">
+                        <h2 class="text-white">
+                            <span class="mytext-primary">Edit Problem:</span> {{ problem.title }}
+                        </h2>
+                        <p class="muted-white">Note: Editing will set the problem back to draft status for admin re-approval.</p>
+                        <form method="post">
+                            {% crispy problem_form %}
+                            {% csrf_token %}
+                            <div class="mb-2">
+                                <small>Has your problem been solved? Update the workaround field with your current solution.
+                                    We'd love to hear if you found it through this platform by
+                                connecting with entrepreneurs!</small>
+                            </div>
+                            <br>
+                            <button class="btn btn-secondary" type="submit">Update Problem</button>
+                            <a href="{% url 'problem_detail' problem.slug %}"
+                               class="btn btn-outline-secondary">Cancel</a>
+                        </form>
+                        <hr>
+                        <h3 class="text-danger">Danger Zone</h3>
+                        <p>Deleting a problem will also remove all associated takes. This cannot be undone.</p>
+                        <button class="btn btn-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteProblemModal">Delete Problem</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
