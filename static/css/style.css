@@ -96,18 +96,6 @@ body {
   border-radius: 5px;
 }
 
-.red-o {
-  color: #e84610;
-}
-
-.thin {
-  font-weight: 300;
-}
-
-.light-bg {
-  background-color: #fff;
-}
-
 .dark-bg {
   background-color: #445261;
 }
@@ -145,47 +133,13 @@ body {
   border: none;
 }
 
-.image-container {
-  position: relative;
-}
-
-.image-flash {
-  position: absolute;
-  bottom: 5%;
-  min-width: 30%;
-  left: -2px;
-  background-color: var(--accent);
-}
-
-.scale {
-  width: 100%;
-  height: auto;
-}
-
-.author {
-  color: var(--primary);
-  margin: 4px;
-  text-transform: uppercase;
-}
-
 .prob-link {
   text-decoration: none;
   color: var(--text);
 }
 
-.post-link:hover,
 .page-link {
   color: #e84610;
-}
-
-.post-title {
-  margin-top: 10%;
-  margin-left: 5%;
-}
-
-.post-subtitle {
-  margin-left: 5%;
-  color: lightgray;
 }
 
 .btn-signup,
@@ -211,22 +165,9 @@ body {
   text-decoration: underline;
 }
 
-.btn-like {
-  color: #e84610;
-  border: none;
-  background: transparent;
-}
-
 .btn-delete {
   color: #fff;
   background: #e84610;
-}
-
-.btn-like:hover,
-.btn-like:active {
-  color: #e84610;
-  background: transparent;
-  border: none;
 }
 
 .faded {
@@ -277,3 +218,69 @@ body {
     max-width: 400px;
   }
 }
+
+/* =============================================
+   UNUSED CLASSES - Review and remove if not needed
+   ============================================= */
+
+/* .red-o {
+  color: #e84610;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.light-bg {
+  background-color: #fff;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-flash {
+  position: absolute;
+  bottom: 5%;
+  min-width: 30%;
+  left: -2px;
+  background-color: var(--accent);
+}
+
+.scale {
+  width: 100%;
+  height: auto;
+}
+
+.author {
+  color: var(--primary);
+  margin: 4px;
+  text-transform: uppercase;
+}
+
+.post-link:hover {
+  color: #e84610;
+}
+
+.post-title {
+  margin-top: 10%;
+  margin-left: 5%;
+}
+
+.post-subtitle {
+  margin-left: 5%;
+  color: lightgray;
+}
+
+.btn-like {
+  color: #e84610;
+  border: none;
+  background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+  color: #e84610;
+  background: transparent;
+  border: none;
+} */

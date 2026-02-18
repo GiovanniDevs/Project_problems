@@ -15,7 +15,7 @@ from .forms import TakeForm, ProblemForm, ProblemSubmitForm
 class ProblemList(generic.ListView):
     queryset = Problem.objects.filter(status='public')
     template_name = "problems/index.html"
-    paginate_by = 12
+    paginate_by = 6
 
 
 def problem_detail(request, slug):

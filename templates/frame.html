@@ -115,22 +115,30 @@
             {% endblock content %}
         </main>
         <!-- Footer -->
-        <footer class="footer mt-auto py-3 dark-bg">
-            <p class="m-0 text-center text-white">
-                {% block copyright %}
-                {% endblock copyright %}
-            </p>
-            <p class="m-0 text-center text-white">
-                Follow us: <i class="fab fa-facebook-square ms-3"></i>
-                <i class="fab fa-twitter-square ms-3"></i>
-                <i class="fab fa-instagram-square ms-3"></i>
-                <i class="fab fa-youtube-square ms-3"></i>
-            </p>
-        </footer>
-        {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> {% endcomment %}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-                crossorigin="anonymous"></script>
-        {% block extras %}{% endblock %}
-    </body>
-</html>
+        <footer class="footer mt-auto py-4 main-bg border-top">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-md-start text-center">
+                        <span class="brand"><span class="gradient">Problems?</span> | <span class="outline">Solved</span></span>
+                        <span class="ms-3 muted-white small">
+                            {% block copyright %}
+                            {% endblock copyright %}
+                        </span>
+                    </div>
+                    <div class="col-md-6 text-md-end text-center mt-3 mt-md-0">
+                        <span class="muted-white">Follow us:</span>
+                        <a href="#" class="ms-3 text-white"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#" class="ms-3 text-white"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#" class="ms-3 text-white"><i class="fab fa-instagram-square"></i></a>
+                        <a href="#" class="ms-3 text-white"><i class="fab fa-youtube-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            </footer {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+            </script> {% endcomment %}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                    crossorigin="anonymous"></script>
+            {% block extras %}{% endblock %}
+        </body>
+    </html>
