@@ -59,10 +59,6 @@
                                aria-current="page"
                                href="{% url 'browse' %}">Explore Problems</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == submit_url %}active" aria-current="page{% endif %}"
-                               href="{% url 'problem_submit' %}">Submit</a>
-                        </li>
                         {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
@@ -83,6 +79,7 @@
                                href="{% url 'about' %}">About</a>
                         </li>
                     </ul>
+                    <a class="me-3" aria-current="page" href="{% url 'problem_submit' %}"><span class="badge badge-primary rounded-pill">Submit a Problem</span></a>
                     {% if user.is_authenticated %}
                         <span class="badge state rounded-pill">You are logged in as {{ user }}</span>
                     {% else %}

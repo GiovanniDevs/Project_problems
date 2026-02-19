@@ -85,6 +85,12 @@ body {
   font-weight: 600;
 }
 
+.badge-primary {
+  background-color: var(--primary);
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* Homepage styling */
 .gradient {
   background: linear-gradient(120deg, var(--primary), var(--accent));
