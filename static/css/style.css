@@ -159,8 +159,17 @@ body {
   margin-bottom: 2rem;
 }
 
+.about-header-bg {
+  background: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+  padding: 1.5rem 2.5rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 90vw;
+}
+
 .card.about-card {
-  background-color: rgb(36, 36, 36);
+  background-color: rgb(24, 24, 24);
   border-width: 0 5px 0 5px;
   border-color: var(--m-primary);
 }
