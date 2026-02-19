@@ -1,3 +1,16 @@
+/* Google font import */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* <weight>: Use a value from 100 to 900 */
+
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --text: #e1e1e1;
   --background: #222222;
@@ -10,8 +23,12 @@
   --gradientB: rgba(40, 58, 76, 0.8);
   --gradientG: rgba(194, 239, 103, 0.3);
 }
+html {
+  font-family: "Montserrat", sans-serif;
+}
 
 body {
+  font-family: "Montserrat", sans-serif;
   background-color: var(--background);
   color: var(--text);
 }
@@ -21,7 +38,7 @@ body {
 }
 
 .brand {
-  font-family: Lato, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: #4a4a4f;
@@ -131,6 +148,21 @@ body {
   background: transparent;
   color: white;
   border: none;
+}
+
+/* About page */
+
+.about-img {
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  margin-bottom: 2rem;
+}
+
+.card.about-card {
+  background-color: rgb(36, 36, 36);
+  border-width: 0 5px 0 5px;
+  border-color: var(--m-primary);
 }
 
 .prob-link {
