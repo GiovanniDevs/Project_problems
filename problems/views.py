@@ -13,7 +13,7 @@ from .forms import TakeForm, ProblemForm, ProblemSubmitForm
 
 
 class ProblemList(generic.ListView):
-    queryset = Problem.objects.filter(status='public')
+    queryset = Problem.objects.all()
     template_name = "problems/index.html"
     paginate_by = 6
 
@@ -32,7 +32,7 @@ def problem_detail(request, slug):
     :template:`problems/problem_detail.html`
     """
 
-    queryset = Problem.objects.filter(status='public')
+    queryset = Problem.objects.all()
     problem = get_object_or_404(queryset, slug=slug)
     takes = problem.takes.all().order_by("-created_date")
     takes_count = problem.takes.filter(status='public').count()

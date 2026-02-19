@@ -19,7 +19,7 @@
             <div class="col-12 mt-3 left">
                 <div class="row">
                     {% for prob in problem_list %}
-                        <div class="col-12 col-sm-6  col-md-4 col-lg-4 mb-3">
+                        <div class="col-12 col-sm-6 {% if prob.status != 'public' and prob.author == user %} faded{% elif prob.status != 'public' %} d-none{% endif %} col-md-4 col-lg-4 mb-3">
                             <div class="index-card mx-auto card mx-3 mb-4 card-clamp">
                                 <div class="card-body">
                                     <a href="{% url 'problem_detail' prob.slug %}" class="prob-link">
@@ -37,6 +37,11 @@
                                         </ul>
                                         <p class="card-text">{{ prob.description|truncatewords:40 }}</p>
                                     </a>
+                                    {% if not prob.status == 'public' and prob.author == user %}
+                                        <p class="approval mt-2 mb-0">
+                                            <small>This take is awaiting approval. Open it to edit or delete it.</small>
+                                        </p>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
