@@ -21,6 +21,15 @@ class ProblemList(generic.ListView):
     def get_queryset(self):
         qs = Problem.objects.all()
         q = self.request.GET.get('q', '').strip()
+        user = self.request.user
+
+        if user.is_authenticated:
+            qs = qs.filter(
+                Q(status='public') | Q(author=user)
+            )
+        else:
+            qs = qs.filter(status='public')
+
         if q:
             qs = qs.filter(
                 Q(title__icontains=q) |

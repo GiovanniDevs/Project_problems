@@ -5,33 +5,27 @@
   {% trans "Sign In" %}
 {% endblock %}
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mt-3 offset-md-2">
-        {% if redirect_field_value == submit_url %}
-          <div class="alert alert-info my-2" role="alert">{% trans "Please log in to submit a problem." %}</div>
-        {% endif %}
-        <h3>{% trans "Sign In" %}</h3>
-        <p>
-          {% blocktrans %}Welcome back to the Problem Solutions. To leave a Take or submit a Problem, please log in. If
-                you
-                have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-                first.{% endblocktrans %}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 mt-3 offset-md-2">
-        <form class="login" method="POST" action="{% url 'account_login' %}">
-          {% csrf_token %}
-          {{ form.as_p }}
-          {% if redirect_field_value %}
-            <input type="hidden"
-                   name="{{ redirect_field_name }}"
-                   value="{{ redirect_field_value }}" />
-          {% endif %}
-          <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
-        </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card mybg-l mb-4">
+          <div class="card-body text-white">
+            <h2 class="fw-bold accent mb-3">{% trans "Sign In" %}</h2>
+            <p class="muted-white mb-4">
+              {% blocktrans %}Welcome back to Problems?Solved. To leave a Take or submit a Problem, please log in. If you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+            </p>
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              {% if redirect_field_value %}
+                <input type="hidden"
+                       name="{{ redirect_field_name }}"
+                       value="{{ redirect_field_value }}" />
+              {% endif %}
+              <button class="btn btn-signup w-100 mt-3" type="submit">{% trans "Sign In" %}</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
