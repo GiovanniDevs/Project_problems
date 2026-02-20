@@ -12,7 +12,7 @@
           <div class="card-body text-white">
             <h2 class="fw-bold accent mb-3">{% trans "Sign In" %}</h2>
             <p class="muted-white mb-4">
-              {% blocktrans %}Welcome back to Problems?Solved. To leave a Take or submit a Problem, please log in. If you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+              {% blocktrans %}Welcome back to Problems?Solved. To leave a Take or submit a Problem, please log in. If you have not created an account yet, then <a class="accent" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
             </p>
             <form class="login" method="POST" action="{% url 'account_login' %}">
               {% csrf_token %}
