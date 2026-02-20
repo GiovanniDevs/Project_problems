@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse
+from django.db.models import Q
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -13,9 +14,21 @@ from .forms import TakeForm, ProblemForm, ProblemSubmitForm
 
 
 class ProblemList(generic.ListView):
-    queryset = Problem.objects.all()
+
     template_name = "problems/index.html"
     paginate_by = 6
+
+    def get_queryset(self):
+        qs = Problem.objects.all()
+        q = self.request.GET.get('q', '').strip()
+        if q:
+            qs = qs.filter(
+                Q(title__icontains=q) |
+                Q(industry__icontains=q) |
+                Q(description__icontains=q) |
+                Q(author__username__icontains=q)
+            )
+        return qs
 
 
 def problem_detail(request, slug):
