@@ -2,8 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* <weight>: Use a value from 100 to 900 */
-
 .montserrat-font {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -127,6 +125,13 @@ body {
   background-color: var(--background);
 }
 /*  Index page styling */
+
+/* Searchbar placeholder */
+
+.form-control.custom-width::placeholder {
+  color: #9aa0a600;
+  font-style: italic;
+}
 
 .card {
   transition:
@@ -260,74 +265,19 @@ body {
   border-color: var(--accent);
 }
 
+@media (min-width: 768px) {
+  .form-control.custom-width::placeholder {
+    color: #9aa0a6 !important;
+    font-style: italic;
+  }
+}
+
 @media (min-width: 992px) {
   .card-clamp {
     max-width: 400px;
   }
+
+  .custom-width {
+    width: 65% !important;
+  }
 }
-
-/* =============================================
-   UNUSED CLASSES - Review and remove if not needed
-   ============================================= */
-
-/* .red-o {
-  color: #e84610;
-}
-
-.thin {
-  font-weight: 300;
-}
-
-.light-bg {
-  background-color: #fff;
-}
-
-.image-container {
-  position: relative;
-}
-
-.image-flash {
-  position: absolute;
-  bottom: 5%;
-  min-width: 30%;
-  left: -2px;
-  background-color: var(--accent);
-}
-
-.scale {
-  width: 100%;
-  height: auto;
-}
-
-.author {
-  color: var(--primary);
-  margin: 4px;
-  text-transform: uppercase;
-}
-
-.post-link:hover {
-  color: #e84610;
-}
-
-.post-title {
-  margin-top: 10%;
-  margin-left: 5%;
-}
-
-.post-subtitle {
-  margin-left: 5%;
-  color: lightgray;
-}
-
-.btn-like {
-  color: #e84610;
-  border: none;
-  background: transparent;
-}
-
-.btn-like:hover,
-.btn-like:active {
-  color: #e84610;
-  background: transparent;
-  border: none;
-} */
