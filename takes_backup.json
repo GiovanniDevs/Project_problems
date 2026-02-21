@@ -1,0 +1,16 @@
+[
+{
+  "model": "problems.take",
+  "pk": 25,
+  "fields": {
+    "problem": 32,
+    "author": 9,
+    "pain_level": 6,
+    "frequency": "weekly",
+    "affected_people": "my_team",
+    "description": "some text for testing",
+    "created_date": "2026-02-21T12:25:40.497Z",
+    "status": "draft"
+  }
+}
+]

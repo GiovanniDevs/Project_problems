@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Problem, Take
 from django_summernote.admin import SummernoteModelAdmin
 
+# Register your models here.
+
 
 @admin.register(Problem)
 class ProblemsAdmin(SummernoteModelAdmin):
@@ -12,6 +14,12 @@ class ProblemsAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
 
 
-# Register your models here.
-
 admin.site.register(Take)
+
+
+# @admin.register(Take)
+# class TakesAdmin(SummernoteModelAdmin):
+#     list_display = ('problem', 'status', 'created_date')
+#     search_fields = ['author', 'description']
+#     list_filter = ('status', 'created_date',)
+#     summernote_fields = ('description',)

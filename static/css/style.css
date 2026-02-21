@@ -43,9 +43,9 @@ body {
 }
 
 /* general styling */
-.bolder {
+/* .bolder {
   font-weight: 600;
-}
+} */
 
 .text-white {
   color: var(--text);
@@ -207,7 +207,7 @@ body {
   font-weight: 600;
 }
 
-.link {
+/* .link {
   color: #23bbbb;
   text-decoration: none;
 }
@@ -216,7 +216,7 @@ body {
 .link:active {
   color: #445261;
   text-decoration: underline;
-}
+} */
 
 .btn-delete {
   color: #fff;
