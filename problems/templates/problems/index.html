@@ -46,6 +46,7 @@
                                             </li>
                                         </ul>
                                         <p class="card-text">{{ prob.description|truncatewords:40 }}</p>
+                                        <span class="badge mybg-mprimary">Takes: {{ prob.takes_count }}</span>
                                     </a>
                                     {% if not prob.status == 'public' and prob.author == user %}
                                         <p class="approval mt-2 mb-0">

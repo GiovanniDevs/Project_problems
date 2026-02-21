@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -19,7 +19,7 @@ class ProblemList(generic.ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        qs = Problem.objects.all()
+        qs = Problem.objects.all().annotate(takes_count=Count('takes'))
         q = self.request.GET.get('q', '').strip()
         user = self.request.user
 

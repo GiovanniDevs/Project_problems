@@ -160,9 +160,9 @@
                                         <span id="affected{{ take.id }}" class="d-none">{{ take.affected_people }}</span>
                                         <!-- Meta fields -->
                                         <div class="d-flex flex-wrap gap-2 mt-auto">
-                                            <span class="badge bg-secondary">Pain: {{ take.pain_level }}/10</span>
-                                            <span class="badge bg-secondary">{{ take.get_frequency_display }}</span>
-                                            <span class="badge bg-secondary">{{ take.get_affected_people_display }}</span>
+                                            <span class="badge mybg-mprimary">Pain: {{ take.pain_level }}/10</span>
+                                            <span class="badge mybg-mprimary">{{ take.get_frequency_display }}</span>
+                                            <span class="badge mybg-mprimary">{{ take.get_affected_people_display }}</span>
                                         </div>
                                         <!-- Actions (only for take author) -->
                                         {% if user.is_authenticated and take.author == user %}
