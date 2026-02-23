@@ -114,7 +114,7 @@ body {
 
 .hero-img {
   object-fit: cover;
-  filter: brightness(0.3);
+  filter: brightness(0.2);
   max-height: 700px;
 }
 
@@ -177,13 +177,6 @@ body {
 }
 
 /* About page */
-
-/* .about-img {
-  background-size: cover;
-  background-position: center;
-  min-height: 300px;
-  margin-bottom: 2rem;
-} */
 
 .about-img {
   position: relative;
