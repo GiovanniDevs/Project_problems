@@ -178,11 +178,31 @@ body {
 
 /* About page */
 
-.about-img {
+/* .about-img {
   background-size: cover;
   background-position: center;
   min-height: 300px;
   margin-bottom: 2rem;
+} */
+
+.about-img {
+  position: relative;
+}
+
+.about-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6);
+  z-index: 0;
+}
+
+.about-img > * {
+  position: relative;
+  z-index: 1;
 }
 
 .about-header-bg {

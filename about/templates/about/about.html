@@ -2,10 +2,9 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="container-fluid py-5 about-img"
-         style="background-image: url('{% if 'placeholder' in about.about_image.url %}{% static 'images/nobody.jpg' %} {% else %}{{ about.about_image.url }}{% endif %}')">
+    <div class="container-fluid py-5 about-img position-relative"
+         style="--bg-image: url('{% if 'placeholder' in about.about_image.url %}{% static 'images/nobody.jpg' %}{% else %}{{ about.about_image.url }}{% endif %}')">
         <div class="row justify-content-center mb-4">
-            <!-- Header Section -->
             <div class="col-12 col-md-10 text-center">
                 <div class="about-header-bg">
                     <h1 class="display-5 fw-bold">
@@ -23,8 +22,8 @@
             <div class="col-10 col-md-8">
                 <div class="card about-card mybg-l mb-4">
                     <div class="card-body text-white">
-                        <div class="muted-white mb-3">{{ about.content | safe }}</div>
-                        <p class="muted-white text-end mb-0">
+                        <div class="mb-3">{{ about.content | safe }}</div>
+                        <p class="text-end mb-0">
                             <em>Updated on: {{ about.updated_date }}</em>
                         </p>
                     </div>
