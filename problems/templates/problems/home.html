@@ -2,20 +2,20 @@
 {% load static %}
 {% block content %}
     <!-- Hero Section -->
-    <div class="position-relative text-center text-white"
+    <div class="position-relative text-center text-white hero-section"
          style="height: 50vh;
                 min-height: 300px">
-        <img src="{% static 'images/default.jpg' %}"
+        <img src="{% static 'images/board.jpg' %}"
              class="w-100 h-100 hero-img"
              alt="Hero background image">
-        <div class="position-absolute top-50 start-50 translate-middle w-100 px-3">
-            <h1 class="display-5 display-md-3 fw-bold">
-                Where <span class="gradient">Problems</span>
+        <div class="position-absolute top-50 start-50 translate-middle w-100 px-3 hero-content">
+            <h1 class="display-3 display-md-3 fw-bold hero-title-1">
+                Where <span class="gradient-b">Problems</span>
             </h1>
-            <h1 class="display-5 fw-bold">
+            <h1 class="display-3 fw-bold hero-title-2">
                 meets <span class="outline">Solutions</span>
             </h1>
-            <p class="lead mt-3">
+            <p class="leader mt-3 hero-lead">
                 A two-sided platform where workers share real problems
                 and entrepreneurs discover ideas worth building.
             </p>
@@ -23,33 +23,33 @@
     </div>
     <div class="container py-5 my-2">
         <div class="row align-items-center justify-content-center">
-            <div class="col-md-4">
-                <h2 class="fw-bold mb-3 accent">Explore Problem</h2>
+            <div class="col-md-5">
+                <h2 class="fw-bold mb-3 accent">Explore Problems</h2>
                 <p class="fs-5 text-white">
                     Find out others existing problems from different industries and backgrounds. Search to filter for specific results.
                 </p>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0">
+            <div class="col-md-5 mb-4 mb-md-0">
                 <div>
-                    <img src="{% static 'images/default.jpg' %}"
-                         class="card-img-top home-card"
+                    <img src="{% static 'images/problems.png' %}"
+                         class="card-img-top home-card "
                          alt="Card image placeholder">
                 </div>
             </div>
         </div>
     </div>
-    <div class="container py-5 my-2 mybg-mprimary">
+    <div class="container-fluid py-5 my-2 mybg-mprimary">
         <div class="row align-items-center justify-content-center">
-            <div class="col-md-4 order-md-2">
+            <div class="col-md-5 order-md-2">
                 <h2 class="fw-bold mb-3 accent">Share your experience</h2>
                 <p class="fs-5 text-white">
                     Share your painful problem that is haunting you,
                     your business or even your industry or add your experience to problems already posted by others!
                 </p>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0">
-                <div>
-                    <img src="{% static 'images/default.jpg' %}"
+            <div class="col-md-5 mb-4 mb-md-0">
+                <div class="d-flex justify-content-center">
+                    <img src="{% static 'images/submit.png' %}"
                          class="card-img-top home-card"
                          alt="Card image placeholder">
                 </div>
@@ -58,19 +58,21 @@
     </div>
     <div class="container py-5 my-2">
         <div class="row align-items-center justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <h2 class="fw-bold mb-3 accent">Find Solutions</h2>
                 <p class="fs-5 text-white">Get connected with business and other solutions makers or just browse others workaraunds</p>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0">
+            <div class="col-md-5 mb-4 mb-md-0">
                 <div>
-                    <img src="{% static 'images/default.jpg' %}"
+                    <img src="{% static 'images/solution.png' %}"
                          class="card-img-top home-card"
                          alt="Card image placeholder">
                 </div>
             </div>
         </div>
     </div>
+    <script src="{% static 'js/gsap.min.js' %}"></script>
+    <script src="{% static 'js/animations.js' %}"></script>
 {% endblock content %}
 {% block copyright %}
     copyright 2026

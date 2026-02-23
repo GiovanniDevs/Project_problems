@@ -42,11 +42,6 @@ body {
   color: #4a4a4f;
 }
 
-/* general styling */
-/* .bolder {
-  font-weight: 600;
-} */
-
 .text-white {
   color: var(--text);
 }
@@ -90,11 +85,24 @@ body {
 }
 
 /* Homepage styling */
+
 .gradient {
   background: linear-gradient(120deg, var(--primary), var(--accent));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.gradient-b {
+  background: linear-gradient(120deg, var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(-2px -2px 3px #ffffff);
+}
+
+.image-adj {
+  max-width: 416px;
 }
 
 .outline {
@@ -103,14 +111,21 @@ body {
   -webkit-text-stroke-color: var(--text);
   color: transparent;
 }
+
+.hero-img {
+  object-fit: cover;
+  filter: brightness(0.3);
+  max-height: 700px;
+}
+
+.leader {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
 /* elements styling */
 
 .container {
   border-radius: 10px;
-}
-.hero-img {
-  object-fit: cover;
-  filter: brightness(0.5);
 }
 
 .home-card {
