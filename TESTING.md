@@ -26,4 +26,104 @@ correct link
 
 ![alt text](static/testing/lighth.png)
 
-# code validation
+# Code validation
+
+## HTML
+
+Validation performed via
+
+<details>
+<summary>Templates Screenshots</summary>
+
+### Home page:
+
+![alt text](static/testing/validation/home.png)
+
+### Problems List:
+
+![alt text](static/testing/validation/index.png)
+
+### Problem Details:
+
+![alt text](static/testing/validation/pro_details.png)
+
+### Submit page:
+
+![alt text](static/testing/validation/submit.png)
+
+### About page:
+
+![alt text](static/testing/validation/about.png)
+
+### Signup page:
+
+![alt text](static/testing/validation/signup.png)
+
+### Login:
+
+![alt text](static/testing/validation/login.png)
+
+### Logout:
+
+![alt text](static/testing/validation/logout.png)
+
+</details>
+
+## CSS
+
+Validation performed via
+
+<details>
+<summary>CSS Screenshot</summary>
+
+### CSS
+
+![alt text](static/testing/validation/css.png)
+
+</details>
+
+## Phyton
+
+Validation performed via
+
+<details>
+<summary>Python Screenshots:</summary>
+
+### Problem App
+
+#### Models
+
+![alt text](static/testing/validation/models.png)
+
+#### Views
+
+![alt text](static/testing/validation/views.png)
+
+#### Forms
+
+![alt text](static/testing/validation/forms.png)
+
+#### Urls
+
+![alt text](static/testing/validation/urls.png)
+
+---
+
+### About App
+
+#### Models
+
+![alt text](static/testing/validation/aboutmodels.png)
+
+#### Views
+
+![alt text](static/testing/validation/aboutviews.png)
+
+#### Forms
+
+![alt text](static/testing/validation/aboutforms.png)
+
+</details>
+![alt text](static/testing/validation/aboutforms.png)
+![alt text](static/testing/validation/aboutmodels.png)
+![alt text](static/testing/validation/aboutviews.png)
