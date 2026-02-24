@@ -140,7 +140,9 @@ def problem_submit(request):
             problem.author = request.user        # attach logged-in user
             problem.slug = slugify(problem.title)  # auto-generate slug
             while Problem.objects.filter(slug=problem.slug).exists():
-                problem.slug = f"{slugify(problem.title)}-{get_random_string(5)}"
+                problem.slug = (
+                    f"{slugify(problem.title)}-{get_random_string(5)}"
+                )
             problem.save()
             messages.add_message(
                 request, messages.SUCCESS,
@@ -151,7 +153,8 @@ def problem_submit(request):
         else:
             messages.add_message(
                 request, messages.ERROR,
-                'Error submitting problem. Please check the form and try again.'
+                'Error submitting problem. '
+                'Please check the form and try again.'
             )
     else:
         problem_form = ProblemSubmitForm()
@@ -189,7 +192,8 @@ def problem_edit(request, slug):
         else:
             messages.add_message(
                 request, messages.ERROR,
-                'Error submitting problem. Please check the form and try again.'
+                'Error submitting problem. '
+                'Please check the form and try again.'
             )
     else:
         problem_form = ProblemForm(instance=problem)
