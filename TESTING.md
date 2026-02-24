@@ -1,7 +1,15 @@
 # Responsiveness
 
-![alt text](static/testing/pc.png)
+**Larger screens**
+
+![alt text](static/testing/PC.png)
+
+**Tablets**
+
 ![alt text](static/testing/pad.png)
+
+**Smartphones**
+
 ![alt text](static/testing/phone.png)
 
 # Browser Compatibility
@@ -9,27 +17,79 @@
 ![alt text](static/testing/compat.png)
 ![alt text](static/testing/browsers.png)
 
+<br>
+
 # Bug Fixing
 
-big problem deploying with horoku initially as apparently it would fail unless switched to
+### 1 - During a particular deployment, heroku would successfully deploy but the app would show an error on launching:
 
-gunicorn==22.0.0 instead of 20
+![heroku app launch error](static/testing/validation/error1.png)
 
-fixed using heroku CLI
+#### Troubleshoting:
 
-<img src="static/testing/CLI.png" width="500">
+Using Heroku CLI I was able to get to the actual errors and successfully retrieve valuable information.
+<img src="static/testing/CLI.png" width="700">
 
-After implementing search functionality in the view, a pagination issue occurred when logged-in users wouldn't see authored Problems waiting for approval
+The problem was a compatibility issue between:
+
+- Gunicorn 20.1.0
+- setuptools 82+
+- Python 3.12
+
+#### Solution:
+
+Update gunicorn to >= 22.0.0
+
+### 2 - After implementing search functionality in the view, a pagination issue occurred when logged-in users wouldn't see authored Problems waiting for approval
+
+#### Troubleshoting:
+
+Wrong filter logic was the root cause.
+Original view:
+
+```Python
+def get_queryset(self):
+    qs = Problem.objects.all()
+    q = self.request.GET.get('q', '').strip()
+    user = self.request.user
+
+    if q:
+        qs = qs.filter(
+            Q(title__icontains=q) |
+            Q(industry__icontains=q) |
+            Q(description__icontains=q) |
+            Q(author__username__icontains=q)
+        )
+    return qs
+```
+
+#### Solution:
+
+The solution was for filtering based on the current user:
+
+```Python
+if user.is_authenticated:
+    qs = qs.filter(
+        Q(status='public') | Q(author=user)
+    )
+else:
+    qs = qs.filter(status='public')
+```
+
+The solution was for filtering based on the current user:
+
 <img src="static/testing/search.png" width="500">
 
-favicon is not served if not in static folder
-correct link
+<br>
+<br>
 
-<link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+# Lighthouse results
 
-# lighthouse
+All major Lighthouse advisories about Performance and SEO were implemented.
 
 ![alt text](static/testing/lighth.png)
+
+<br>
 
 # Code validation
 
@@ -81,8 +141,6 @@ Validation performed via
 <details>
 <summary>CSS Screenshot</summary>
 
-### CSS
-
 ![alt text](static/testing/validation/css.png)
 
 </details>
@@ -92,7 +150,7 @@ Validation performed via
 Validation performed via
 
 <details>
-<summary>Python Screenshots:</summary>
+<summary>Python Screenshots</summary>
 
 ### Problem App
 
@@ -130,7 +188,24 @@ Validation performed via
 
 </details>
 
----
+## JavaScript
+
+Validation performed via
+
+<details>
+<summary>Python Screenshots:</summary>
+
+### Edit and Delete buttons functionality
+
+![alt text](static/testing/validation/buttons.png)
+
+### GSAP Animations
+
+![alt text](static/testing/validation/gsapanimation.png)
+
+</details>
+
+<br>
 
 # User Stories Testing
 
@@ -147,6 +222,8 @@ Validation performed via
 | As a visitor, I want to search and filter problems so I can find relevant issues                       | Typed a few keywords in the search bar, which returned the correct filtered queryset                                                                                                       |
 | As a visitor, I want to view an About page so I can understand the platform's mission                  | Clicking on about page renders the correct template and return the correct site information.                                                                                               |
 | As an admin, I want to moderate problems and takes so I can maintain platform quality                  | Visiting admin panel "status" of problems and take can be adjusted to public or draft.                                                                                                     |
+
+<br>
 
 # Features
 
