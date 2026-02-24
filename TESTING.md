@@ -21,3 +21,9 @@ favicon is not served if not in static folder
 correct link
 
 <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+
+# lighthouse
+
+![alt text](static/testing/lighth.png)
+
+# code validation
