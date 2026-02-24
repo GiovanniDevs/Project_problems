@@ -33,7 +33,7 @@
                             <div class="index-card mx-auto card mx-3 mb-4 card-clamp">
                                 <div class="card-body">
                                     <a href="{% url 'problem_detail' prob.slug %}" class="prob-link">
-                                        <h5 class="card-title">{{ prob.title|truncatechars:70 }}</h5>
+                                        <h2 class="h5 card-title">{{ prob.title|truncatechars:70 }}</h2>
                                         <ul class="list-group my-3">
                                             <li class="list-group-item">
                                                 <b>Author: </b>{{ prob.author }}
