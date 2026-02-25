@@ -7,7 +7,10 @@
   <img src="https://img.shields.io/badge/version-1.0.0-blue" />
   <img src="https://img.shields.io/github/license/GiovanniDevs/Project_problems" />
 </p>
+
 # Problem? Solved
+
+No Problems, Only Solutions is a two-sided web platform where workers can post real workplace pain points and other users can add “Takes” to share context, workarounds, and validation. By turning everyday frustrations into structured, searchable posts, the project helps entrepreneurs discover problem-first business ideas while giving workers a place to document issues and learn from others experiencing the same challenges.
 
 ## Table Of Contents:
 
@@ -38,27 +41,122 @@
 
 ### User Stories
 
-Write your user stories in this section
+| #   | User Story                                                                                             |
+| --- | ------------------------------------------------------------------------------------------------------ |
+| 1   | As a visitor, I want to browse public problems so I can explore what issues people are facing          |
+| 2   | As a registered user, I want to create a new problem post so I can share workplace frustrations        |
+| 3   | As a registered user, I want to edit my own problems so I can update or correct information            |
+| 4   | As a registered user, I want to delete my own problems so I can remove content I no longer want public |
+| 5   | As a visitor, I want to view detailed information about a problem so I can understand it fully         |
+| 6   | As a visitor, I want to view comments or takes on a problem so I can see community responses           |
+| 7   | As a visitor, I want to register and log in so I can participate in the platform                       |
+| 8   | As a visitor, I want to contact the site administrators so I can ask questions or report issues        |
+| 9   | As a visitor, I want to search and filter problems so I can find relevant issues                       |
+| 10  | As a visitor, I want to view an About page so I can understand the platform's mission                  |
+| 11  | As an admin, I want to moderate problems and takes so I can maintain platform quality                  |
 
 ### Wireframes
 
-Attach wireframes in this section
+Wireframes created via **Balsamic**
 
-### Agile Methodology
+<img src="static/images/readmeimg/ux1.png" width="200">
+<img src="static/images/readmeimg/ux2.png" width="200">
+<img src="static/images/readmeimg/ux4.png" width="200">
+
+<img src="static/images/readmeimg/ux5.png" width="200">
+<img src="static/images/readmeimg/ux6.png" width="200">
+<img src="static/images/readmeimg/ux3.png" width="200">
 
 Explain your agile approach to your project and insert screenshoots of your Kanban board (itterations, user stories, tasks,acceptance criteria, labels, story points...)
 
 ### Typography
 
-Explain font you've used for your project
+**Montserrat** is used as the project’s primary typeface to keep the UI clean, modern, and easy to read across headings, navigation, and body text. It is imported via Google Fonts, with a sans‑serif fallback for consistent rendering. The font’s wide weight range supports clear visual hierarchy, while the project’s default styling uses a normal 400 weight for comfortable body readability.
 
 ### Colour Scheme
 
-Screenshoot of the colour scheme for your project
+The following swatches were chosen for the main pallette
+
+<img src="static/images/readmeimg/swatches.png" width="400
+">
+
+The following table includes variations used across the website
+
+| Name           | Color                    | Swatch                                                                                              |
+| -------------- | ------------------------ | --------------------------------------------------------------------------------------------------- |
+| --text         | #e1e1e1                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/E1E1E1?style=circle'/></a> |
+| --background   | #222222                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/222222?style=circle'/></a> |
+| --background-l | #303030                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/303030?style=circle'/></a> |
+| --primary      | #283a4c                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/283A4C?style=circle'/></a> |
+| --m-primary    | #2f3b47                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/2F3B47?style=circle'/></a> |
+| --mm-primary   | #383d42                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/383D42?style=circle'/></a> |
+| --secondary    | #648cb3                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/648CB3?style=circle'/></a> |
+| --accent       | #c2ef67                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/C2EF67?style=circle'/></a> |
+| --gradientB    | rgba(40, 58, 76, 0.8)    | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/283A4C?style=circle'/></a> |
+| --gradientG    | rgba(194, 239, 103, 0.3) | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/C2EF67?style=circle'/></a> |
 
 ### DataBase Diagram
 
-Image of the database diagram for your project, you can name your database models as well and how they are connected
+```mermaid
+erDiagram
+    USER ||--o{ PROBLEM : "author"
+    USER ||--o{ TAKE : "author"
+    PROBLEM ||--o{ TAKE : "problem"
+
+    USER {
+        int id PK
+        string email
+        string password
+    }
+
+    PROBLEM {
+        int id PK
+        string title
+        string slug
+        string description
+        string industry
+        string job_role
+        int pain_level
+        string frequency
+        string affected_people
+        string workaround
+        string contact_info
+        boolean show_contact
+        int upvote_count
+        string status
+        boolean is_solved
+        datetime create_date
+        datetime update_date
+    }
+
+    TAKE {
+        int id PK
+        int problem FK
+        int author FK
+        int pain_level
+        string frequency
+        string affected_people
+        string description
+        datetime created_date
+        string status
+    }
+
+    ABOUT {
+        int id PK
+        string title
+        datetime updated_on
+        string content
+        string about_image
+    }
+
+    CONTACT {
+        int id PK
+        string name
+        string email
+        string message
+        boolean read
+        datetime created_date
+    }
 
 ## Features:
 
@@ -158,3 +256,4 @@ This website is deployed to Heroku from a GitHub repository, the following steps
 ## Credits
 
 List of used resources for your website (text, images, snippets of code, projects....)
+```
