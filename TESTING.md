@@ -227,8 +227,8 @@ Validation performed via https://jshint.com/
 
 | Feature              | Action                                | Effect                                                                                                |
 | -------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Navbar               | clicking on each link                 | direct to correct template                                                                            |
-| Search Bar           | Search for "customer"                 | returns correct filtered list                                                                         |
+| Navbar               | clicking on each link                 | Directs to correct template                                                                           |
+| Search Bar           | Search for "customer"                 | Returns correct filtered list                                                                         |
 | Pagination           | Click on PREV or NEXT                 | Show the next or previous set of entries                                                              |
 | Take validation      | Try submitting invalid/valid form     | Shows error/confirm message at the top, retain current form content and shows help text (if invalid). |
 | Take edit/delete     | Click on edit/delete buttons          | Perform expected operations and includes user messages, modals, draft status, author ownership check  |

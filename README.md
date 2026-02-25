@@ -13,11 +13,11 @@
 
 # Problem? Solved
 
-No Problems, Only Solutions is a two-sided web platform where workers can post real workplace pain points and other users can add “Takes” to share context, workarounds, and validation. By turning everyday frustrations into structured, searchable posts, the project helps entrepreneurs discover problem-first business ideas while giving workers a place to document issues and learn from others experiencing the same challenges.
+**Problem? Solved** is a two-sided web platform where workers can post real workplace pain points and other users can add “Takes” to share context, workarounds, and validation. By turning everyday frustrations into structured, searchable posts, the project helps entrepreneurs discover problem-first business ideas while giving workers a place to document issues and learn from others experiencing the same challenges.
 
 ![alt text](static/images/readmeimg/amir.png)
 
-## Table Of Contents:
+## Table Of Contents
 
 1. [Design & Planning](#design-&-planning)
    - [User Stories](#user-stories)
@@ -39,7 +39,7 @@ No Problems, Only Solutions is a two-sided web platform where workers can post r
 7. [AI](#AI)
 8. [Credits](#credits)
 
-## Design & Planning:
+## Design & Planning
 
 ### User Stories
 
@@ -73,11 +73,44 @@ Wireframes created via **Balsamic**
   <img src="static/images/readmeimg/ux3.png" width="200" />
 </p>
 
-Explain your agile approach to your project and insert screenshoots of your Kanban board (itterations, user stories, tasks,acceptance criteria, labels, story points...)
+### Agile Methodology
+
+This project was developed using an Agile, iterative approach, with work planned and tracked on a GitHub Projects board. The board acted as the single source of truth for what was being built, what was in progress, and what was completed.
+
+#### Iterative development and future iterations
+
+Development focused on delivering a clear **MVP (Minimum Viable Product)** first, then improving the product through small, testable increments. Features that were not essential for the MVP were intentionally deferred and recorded as **future iterations** to be implemented after the core experience was stable.
+
+Examples of items captured for future iterations include additional functionality such as upvote and users's profile page.
+
+#### User stories
+
+Requirements were written as **user stories** with format:
+
+- **As a** user
+- **I want** to do something
+- **So that** I achieve some value
+
+User stories were used to define scope, guide implementation, and provide structure for **testing and validation.**
+
+#### Tasks and acceptance criteria
+
+Each user story was broken down into smaller **tasks**. Wherever possible, user stories included clear **acceptance criteria** so it was obvious when a feature was “done”.
+
+Acceptance criteria were written as a checklist of conditions that must be true for the story to be accepted. This ensured work was testable, reduced ambiguity, and helped prevent partially-finished features from being marked complete.
+
+#### MoSCoW prioritisation
+
+To manage scope and protect the MVP, work was prioritised using **MoSCoW**:
+
+- **Must have**: essential functionality required for the MVP and core user journey.
+- **Should have**: important improvements that significantly enhance usability, but are not strictly required for MVP.
+- **Could have**: nice-to-have enhancements that add value if time allows.
+- **Won’t have (this iteration)**: explicitly out of scope for the current release and moved to future iterations.
 
 ### Typography
 
-**Montserrat** is used as the project’s primary typeface to keep the UI clean, modern, and easy to read across headings, navigation, and body text. It is imported via Google Fonts, with a sans‑serif fallback for consistent rendering. The font’s wide weight range supports clear visual hierarchy, while the project’s default styling uses a normal 400 weight for comfortable body readability.
+**Montserrat** is used as the project’s primary typeface to keep the UI clean, modern, and easy to read across headings, navigation, and body text. It is imported via Google Fonts, with a sans‑serif fallback for consistent rendering.
 
 ### Colour Scheme
 
@@ -88,7 +121,7 @@ The following swatches were chosen for the main pallette
 
 The following table includes variations used across the website
 
-| Name           | Color                    | Swatch                                                                                              |
+| Var            | Color                    | Swatch                                                                                              |
 | -------------- | ------------------------ | --------------------------------------------------------------------------------------------------- |
 | --text         | #e1e1e1                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/E1E1E1?style=circle'/></a> |
 | --background   | #222222                  | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/222222?style=circle'/></a> |
@@ -165,7 +198,7 @@ erDiagram
     }
 ```
 
-## Features:
+## Features
 
 ### Home-page
 
@@ -224,7 +257,7 @@ The core of the application has full CRUD functionality around user-generated co
 
 ## Testing
 
-Please find all test in
+Please find all tests in
 [TESTING.md](TESTING.md)
 
 ## Deployment
@@ -293,4 +326,6 @@ Overall, AI improved efficiency by reducing time spent on boilerplate, speeding 
 
 ## Credits
 
-List of used resources for your website (text, images, snippets of code, projects....)
+Hero Image by [İrfan Simsar](https://unsplash.com/@irfansimsar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/black-rolling-armchair-under-white-table-wxWulfjN-G0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
+About page image by [Alejandro Barba](https://unsplash.com/@albrb?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/black-and-white-checkered-textile-vp-GzTh9Oek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
