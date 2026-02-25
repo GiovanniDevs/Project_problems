@@ -1,11 +1,14 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/python-3.12-blue" />
-  <img src="https://img.shields.io/badge/django-4.2-darkgreen" />
+  <img src="https://img.shields.io/badge/python-3.12-blue" style="margin: 0 4px;" />
+  <img src="https://img.shields.io/badge/django-4.2-darkgreen" style="margin: 0 4px;" />
   <a href="https://your-app.herokuapp.com">
-    <img src="https://img.shields.io/badge/deployed-Heroku-7056bf" />
+    <img src="https://img.shields.io/badge/deployed-Heroku-7056bf" style="margin: 0 4px;" />
   </a>
-  <img src="https://img.shields.io/badge/version-1.0.0-blue" />
-  <img src="https://img.shields.io/github/license/GiovanniDevs/Project_problems" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" style="margin: 0 4px;" />
+  <img src="https://img.shields.io/badge/version-1.0.0-blue" style="margin: 0 4px;" />
+  <a href="https://github.com/GiovanniDevs/Project_problems/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/GiovanniDevs/Project_problems" style="margin: 0 4px;" />
+  </a>
 </p>
 
 # Problem? Solved
@@ -59,13 +62,17 @@ No Problems, Only Solutions is a two-sided web platform where workers can post r
 
 Wireframes created via **Balsamic**
 
-<img src="static/images/readmeimg/ux1.png" width="200">
-<img src="static/images/readmeimg/ux2.png" width="200">
-<img src="static/images/readmeimg/ux4.png" width="200">
+<p float="left">
+  <img src="static/images/readmeimg/ux1.png" width="200" />
+  <img src="static/images/readmeimg/ux2.png" width="200" />
+  <img src="static/images/readmeimg/ux4.png" width="200" />
+</p>
 
-<img src="static/images/readmeimg/ux5.png" width="200">
-<img src="static/images/readmeimg/ux6.png" width="200">
-<img src="static/images/readmeimg/ux3.png" width="200">
+<p float="left">
+  <img src="static/images/readmeimg/ux5.png" width="200" />
+  <img src="static/images/readmeimg/ux6.png" width="200" />
+  <img src="static/images/readmeimg/ux3.png" width="200" />
+</p>
 
 Explain your agile approach to your project and insert screenshoots of your Kanban board (itterations, user stories, tasks,acceptance criteria, labels, story points...)
 
@@ -161,21 +168,60 @@ erDiagram
 
 ## Features:
 
-Explain your features on the website,(navigation, pages, links, forms, input fields, CRUD....)
+### Home-page
+
+The Home page introduces the purpose of the platform and explains how to use it. It features a clear title, a large hero image, and simple visual sections that guide users through browsing problems, viewing takes, posting a problem, and adding a take.
 
 ### Navigation
 
-### Footer
-
-### Home-page
+- A responsive navigation bar provides quick access to the main areas of the site, including browsing problems, posting a new problem (for logged-in users), authentication links, and informational pages like About and Contact.
 
 ### CRUD
 
+The core of the application has full CRUD functionality around user-generated content.
+
+**Problems**
+
+- **Create:** Logged-in users can submit a new workplace problem through a structured form with validation.
+- **Read:** Visitors can browse public problems in a list view and open a full problem detail page.
+- **Update:** Users can edit problems they authored to keep information accurate and up to date.
+- **Delete:** Users can delete problems they authored, with a confirmation step to prevent accidental removal.
+
+**Takes (YourTake contributions)**
+
+- **Create:** Logged-in users can add a “Take” to contribute context, alternatives, or workarounds.
+- **Read:** Takes are displayed on each problem’s detail page so users can compare experiences and learn from others.
+- **Update:** Users can edit takes they authored.
+- **Delete:** Users can delete takes they authored.
+
+**Contact form**
+
+- Users can submit messages to the site through a contact form.
+- Submissions are stored in the database for admin review.
+
 ### Authentication-Authorisation
+
+- User authentication is implemented with **Django Allauth**, supporting registration, login, and logout.
+- Authorisation rules restrict actions appropriately:
+  - Only authenticated users can create content (problems and takes).
+  - Users can only edit or delete content they created.
+  - Visitors can browse public content but cannot post, or access restricted data.
 
 ## Technologies Used
 
-List of technologies used for your project
+- **HTML**
+- **CSS**
+- **Python**
+- **Django**
+- **PostgreSQL** (production database)
+- **Django Allauth** (authentication)
+- **Bootstrap 5** (responsive UI)
+- **Crispy Forms** (form rendering and layout)
+- **JavaScript** (enhanced UI interactions such as buttons and dynamic controls)
+- **HTML5 / CSS3**
+- **Google Fonts (Montserrat)** (typography)
+- **Heroku** (deployment)
+- **WhiteNoise** (static file serving in production)
 
 ## Testing
 
