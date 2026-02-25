@@ -1,8 +1,12 @@
-![Python](https://img.shields.io/badge/python-3.12-blue)
-![Django](https://img.shields.io/badge/django-4.2-darkgreen)
-[![Heroku](https://img.shields.io/badge/deployed-Heroku-7056bf)](https://your-app.herokuapp.com)
-![License](https://img.shields.io/github/license/Project_problems/REPO)
-
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.12-blue" />
+  <img src="https://img.shields.io/badge/django-4.2-darkgreen" />
+  <a href="https://your-app.herokuapp.com">
+    <img src="https://img.shields.io/badge/deployed-Heroku-7056bf" />
+  </a>
+  <img src="https://img.shields.io/badge/version-1.0.0-blue" />
+  <img src="https://img.shields.io/github/license/GiovanniDevs/Project_problems" />
+</p>
 # Problem? Solved
 
 ## Table Of Contents:
