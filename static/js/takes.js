@@ -14,11 +14,11 @@ const deleteConfirm = document.getElementById("deleteConfirm");
  * Initializes edit functionality for the provided edit buttons.
  *
  * For each button in the `editButtons` collection:
- * - Retrieves the associated comment's ID upon click.
- * - Fetches the content of the corresponding comment.
- * - Populates the `commentText` input/textarea with the comment's content for editing.
+ * - Retrieves the associated take's ID upon click.
+ * - Fetches the content of the corresponding take.
+ * - Populates the `takeText` input/textarea with the take's content for editing.
  * - Updates the submit button's text to "Update".
- * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
+ * - Sets the form's action attribute to the `edit_take/{takeId}` endpoint.
  */
 
 for (let button of editButtons) {
@@ -41,9 +41,9 @@ for (let button of editButtons) {
  * Initializes deletion functionality for the provided delete buttons.
  *
  * For each button in the `deleteButtons` collection:
- * - Retrieves the associated comment's ID upon click.
+ * - Retrieves the associated take's ID upon click.
  * - Updates the `deleteConfirm` link's href to point to the
- * deletion endpoint for the specific comment.
+ * deletion endpoint for the specific take.
  * - Displays a confirmation modal (`deleteModal`) to prompt
  * the user for confirmation before deletion.
  */

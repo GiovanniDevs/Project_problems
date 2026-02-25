@@ -3,24 +3,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="container mt-5">
-        {% comment %} <div class="row justify-content-center">
-            <div class="col-12 col-md-8 my-5">
-                <h2>
-                    <span class="mytext-primary">Edit Problem:</span> {{ problem.title }}
-                </h2>
-                <p class="muted-white">Note: Editing will set the problem back to draft status for admin re-approval.</p>
-                <form method="post">
-                    {% crispy problem_form %}
-                    {% csrf_token %}
-                    <button class="btn btn-secondary" type="submit">Update Problem</button>
-                    <a href="{% url 'problem_detail' problem.slug %}" class="btn btn-outline-secondary">Cancel</a>
-                </form>
-                <hr>
-                <h3 class="text-danger">Danger Zone</h3>
-                <p>Deleting a problem will also remove all associated takes. This cannot be undone.</p>
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProblemModal">Delete Problem</button>
-            </div>
-        </div> {% endcomment %}
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <div class="card mybg-l mb-4 ">

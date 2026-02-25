@@ -76,10 +76,6 @@ else:
     qs = qs.filter(status='public')
 ```
 
-The solution was for filtering based on the current user:
-
-<img src="static/testing/search.png" width="500">
-
 <br>
 <br>
 
@@ -95,7 +91,7 @@ All major Lighthouse advisories about Performance and SEO were implemented.
 
 ## HTML
 
-Validation performed via
+Validation performed via https://validator.w3.org/
 
 <details>
 <summary>Templates Screenshots</summary>
@@ -136,7 +132,7 @@ Validation performed via
 
 ## CSS
 
-Validation performed via
+Validation performed via https://jigsaw.w3.org/css-validator/
 
 <details>
 <summary>CSS Screenshot</summary>
@@ -147,7 +143,7 @@ Validation performed via
 
 ## Phyton
 
-Validation performed via
+Validation performed via https://pep8ci.herokuapp.com/
 
 <details>
 <summary>Python Screenshots</summary>
@@ -190,7 +186,7 @@ Validation performed via
 
 ## JavaScript
 
-Validation performed via
+Validation performed via https://jshint.com/
 
 <details>
 <summary>Python Screenshots:</summary>

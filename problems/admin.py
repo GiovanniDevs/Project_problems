@@ -15,11 +15,3 @@ class ProblemsAdmin(SummernoteModelAdmin):
 
 
 admin.site.register(Take)
-
-
-# @admin.register(Take)
-# class TakesAdmin(SummernoteModelAdmin):
-#     list_display = ('problem', 'status', 'created_date')
-#     search_fields = ['author', 'description']
-#     list_filter = ('status', 'created_date',)
-#     summernote_fields = ('description',)
