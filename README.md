@@ -157,6 +157,7 @@ erDiagram
         boolean read
         datetime created_date
     }
+```
 
 ## Features:
 
@@ -256,4 +257,7 @@ This website is deployed to Heroku from a GitHub repository, the following steps
 ## Credits
 
 List of used resources for your website (text, images, snippets of code, projects....)
+
+```
+
 ```
