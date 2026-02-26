@@ -6,7 +6,7 @@
   </a>
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white" style="margin: 0 4px;" />
   <img src="https://img.shields.io/badge/version-1.0.0-blue" style="margin: 0 4px;" />
-  <a href="https://github.com/GiovanniDevs/Project_problems/blob/main/LICENCE">
+  <a href="https://github.com/GiovanniDevs/Project_problems/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/GiovanniDevs/Project_problems" style="margin: 0 4px;" />
   </a>
 </p>
