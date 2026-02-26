@@ -13,7 +13,9 @@
 
 # Problem? Solved
 
-**Problem? Solved** is a two-sided web platform where workers can post real workplace pain points and other users can add “Takes” to share context, workarounds, and validation. By turning everyday frustrations into structured, searchable posts, the project helps entrepreneurs discover problem-first business ideas while giving workers a place to document issues and learn from others experiencing the same challenges.
+**Problem? Solved** is a two-sided web platform where workers can post real workplace pain points and other users can add “Takes” (much like comments) to share their personal experience, workarounds, and validation. By turning everyday frustrations into structured, searchable posts, the project helps entrepreneurs discover problem-first business ideas while giving workers a place to document issues and learn from others experiencing the same challenges.
+
+Deployed link: https://projectproblems-e3632064db94.herokuapp.com/
 
 ![alt text](static/images/readmeimg/amir.png)
 
@@ -79,7 +81,7 @@ This project was developed using an Agile, iterative approach, with work planned
 
 #### Iterative development and future iterations
 
-Development focused on delivering a clear **MVP (Minimum Viable Product)** first, then improving the product through small, testable increments. Features that were not essential for the MVP were intentionally deferred and recorded as **future iterations** to be implemented after the core experience was stable.
+Development focused on delivering a clear **MVP (Minimum Viable Product)** first, then improving the product through small, testable increments. Features that were not essential for the MVP were intentionally deferred and recorded for **future iterations** to be implemented after the core experience was stable.
 
 Examples of items captured for future iterations include additional functionality such as upvote and users's profile page.
 
@@ -206,7 +208,7 @@ The Home page introduces the purpose of the platform and explains how to use it.
 
 ### Navigation
 
-- A responsive navigation bar provides quick access to the main areas of the site, including browsing problems, posting a new problem (for logged-in users), authentication links, and informational pages like About and Contact.
+- A responsive navigation bar provides quick access to the main areas of the site, including browsing problems, posting a new problem (for logged-in users), authentication links, and About page.
 
 ### CRUD
 
@@ -219,7 +221,7 @@ The core of the application has full CRUD functionality around user-generated co
 - **Update:** Users can edit problems they authored to keep information accurate and up to date.
 - **Delete:** Users can delete problems they authored, with a confirmation step to prevent accidental removal.
 
-**Takes (YourTake contributions)**
+**Takes**
 
 - **Create:** Logged-in users can add a “Take” to contribute context, alternatives, or workarounds.
 - **Read:** Takes are displayed on each problem’s detail page so users can compare experiences and learn from others.
@@ -241,8 +243,6 @@ The core of the application has full CRUD functionality around user-generated co
 
 ## Technologies Used
 
-- **HTML**
-- **CSS**
 - **Python**
 - **Django**
 - **PostgreSQL** (production database)
@@ -262,7 +262,7 @@ Please find all tests in
 
 ## Deployment
 
-This website is deployed to Heroku from a GitHub repository, the following steps were taken:
+This website was deployed to Heroku from a GitHub repository, the following steps were taken:
 
 #### Creating Repository on GitHub
 
