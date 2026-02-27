@@ -35,7 +35,7 @@ Deployed link: https://projectproblems-e3632064db94.herokuapp.com/
    - [Authentication & Authorisation](#Authentication-Authorisation)
 
 3. [Technologies Used](#technologies-used)
-4. [Libraries](#libraries-used)
+4. [Libraries Used](#libraries-used)
 5. [Testing](#testing)
 6. [Deployment](#deployment)
 7. [AI](#AI)
@@ -61,7 +61,7 @@ Deployed link: https://projectproblems-e3632064db94.herokuapp.com/
 
 ### Wireframes
 
-Wireframes created via **Balsamic**
+Wireframes created using **Balsamiq**.
 
 <p float="left">
   <img src="static/images/readmeimg/ux1.png" width="200" />
@@ -116,12 +116,12 @@ To manage scope and protect the MVP, work was prioritised using **MoSCoW**:
 
 ### Colour Scheme
 
-The following swatches were chosen for the main pallette
+The following swatches were chosen for the main palette.
 
 <img src="static/images/readmeimg/swatches.png" width="400
 ">
 
-The following table includes variations used across the website
+The following table includes color variations used across the website.
 
 | Var            | Color                    | Swatch                                                                                              |
 | -------------- | ------------------------ | --------------------------------------------------------------------------------------------------- |
@@ -136,7 +136,7 @@ The following table includes variations used across the website
 | --gradientB    | rgba(40, 58, 76, 0.8)    | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/283A4C?style=circle'/></a> |
 | --gradientG    | rgba(194, 239, 103, 0.3) | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/C2EF67?style=circle'/></a> |
 
-### DataBase Diagram
+### Database Diagram
 
 ```mermaid
 erDiagram
@@ -208,11 +208,11 @@ The Home page introduces the purpose of the platform and explains how to use it.
 
 ### Navigation
 
-- A responsive navigation bar provides quick access to the main areas of the site, including browsing problems, posting a new problem (for logged-in users), authentication links, and About page.
+- A responsive navigation bar provides quick access to the main areas of the site, including browsing problems, posting a new problem (for logged-in users), authentication links, and the About page.
 
 ### CRUD
 
-The core of the application has full CRUD functionality around user-generated content.
+The core of the application has full CRUD functionality for user-generated content.
 
 **Problems**
 
@@ -223,12 +223,12 @@ The core of the application has full CRUD functionality around user-generated co
 
 **Takes**
 
-- **Create:** Logged-in users can add a “Take” to contribute context, alternatives, or workarounds.
+- **Create:** Logged-in users can add a “Take” to contribute personal experience, alternatives, or workarounds.
 - **Read:** Takes are displayed on each problem’s detail page so users can compare experiences and learn from others.
 - **Update:** Users can edit takes they authored.
 - **Delete:** Users can delete takes they authored.
 
-**Contact form**
+**Contact Form**
 
 - Users can submit messages to the site through a contact form.
 - Submissions are stored in the database for admin review.
@@ -243,6 +243,7 @@ The core of the application has full CRUD functionality around user-generated co
 
 ## Technologies Used
 
+- **HTML5 / CSS3**
 - **Python**
 - **Django**
 - **PostgreSQL** (production database)
@@ -250,15 +251,13 @@ The core of the application has full CRUD functionality around user-generated co
 - **Bootstrap 5** (responsive UI)
 - **Crispy Forms** (form rendering and layout)
 - **JavaScript** (enhanced UI interactions such as buttons and dynamic controls)
-- **HTML5 / CSS3**
 - **Google Fonts (Montserrat)** (typography)
 - **Heroku** (deployment)
 - **WhiteNoise** (static file serving in production)
 
 ## Testing
 
-Please find all tests in
-[TESTING.md](TESTING.md)
+See [TESTING.md](TESTING.md) for all tests.
 
 ## Deployment
 
@@ -268,14 +267,14 @@ This website was deployed to Heroku from a GitHub repository, the following step
 
 - Sign in to [GitHub](https://github.com/).
 - Create a new repository for your project (or use an existing one).
-- Push your project code to GitHub, making sure any secrets are **not** committed (use environment variables and a `.gitignore` file).
+- Push your project code to GitHub, ensuring that any secrets are **not** committed (use environment variables and a `.gitignore` file).
 
 #### Creating an app on Heroku
 
 - Go to [Heroku](https://www.heroku.com/) and sign in (or create an account if needed).
 - From the dashboard, click **New** → **Create new app**.
 - Enter an **App name** (it must be unique across Heroku).
-- Choose a **Region** (pick the one closest to you, for example **Europe**), then click **Create app**.
+- Choose a **Region** (pick the one closest to you, for example, **Europe**), then click **Create app**.
 - Once the app is created, use the app’s tabs to configure it:
   - **Settings**: where you manage app settings and environment variables (Config Vars).
   - **Deploy**: where you connect your GitHub repo and trigger deployments.
@@ -288,7 +287,7 @@ This website was deployed to Heroku from a GitHub repository, the following step
 - If prompted, click **Connect to GitHub** and authorise Heroku to access your GitHub account.
 - In **Connect to GitHub**, search for your repository by name and click **Connect**.
 - Under **Manual deploy**, select the branch you want to deploy (commonly `main`) and click **Deploy Branch**.
-- When the build completes successfully, you can open the live site.
+- When the build completes successfully, open the live site.
 
 **Deployed site:** https://projectproblems-e3632064db94.herokuapp.com/
 
