@@ -7,7 +7,15 @@ from cloudinary.models import CloudinaryField
 
 
 class Problem(models.Model):
-    """Main model for workplace problems"""
+    """
+    Represents a workplace problem submitted by a user.
+
+    Stores metadata and details used by the application
+
+    Choice constants for status, industry, frequency, affected people, and
+    pain levels are defined on the class and used by corresponding 
+    model fields.
+    """
 
     # Status choices
     STATUS_CHOICES = [
@@ -97,6 +105,14 @@ class Problem(models.Model):
 
 
 class Take(models.Model):
+    """
+    Represents a user's response ('take') on a `Problem`.
+
+    Stores the author's assessment of the problem (pain level, frequency,
+    affected scope), a freeform `description`, and publication metadata.
+    Choice constants are defined on the class to keep selections consistent
+    with the `Problem` model.
+    """
     # Frequency choices
     FREQUENCY_CHOICES = [
         ('daily', 'Daily'),

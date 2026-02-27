@@ -15,6 +15,13 @@ from .forms import TakeForm, ProblemForm, ProblemSubmitForm
 
 class ProblemList(generic.ListView):
 
+    """List view for `Problem` objects, supports search and pagination.
+
+    Filters results by publication status and optional query string from
+    `?q=`. Authenticated users see their own drafts in addition to public
+    problems. Annotates each object with `takes_count`.
+    """
+
     template_name = "problems/index.html"
     paginate_by = 6
 
@@ -92,7 +99,11 @@ def problem_detail(request, slug):
 
 
 def take_edit(request, slug, take_id):
-    # view to edit Takes
+    """Handle editing an existing `Take`.
+
+    Accepts POST data to update a take if the requester is the author.
+    Redirects back to the parent `Problem` detail view after processing.
+    """
 
     if request.method == "POST":
         queryset = Problem.objects.filter(status='public')
@@ -133,6 +144,11 @@ def take_delete(request, slug, take_id):
 
 @login_required
 def problem_submit(request):
+    """Display and process the problem submission form.
+
+    On POST a new `Problem` is created with the current user as author and a
+    unique slug is generated. Redirects to home on success.
+    """
     if request.method == "POST":
         problem_form = ProblemSubmitForm(data=request.POST)
         if problem_form.is_valid():

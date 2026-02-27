@@ -1,3 +1,15 @@
+/*
+  animations.js
+
+  GSAP-based UI animations for the site hero section. Loaded on
+  `DOMContentLoaded` so animations run once the DOM is ready.
+
+  - Background subtle zoom: `.hero-img`
+  - Staggered text reveals: `.hero-title-1`, `.hero-title-2`, `.hero-lead`
+
+  Requires GSAP (gsap.min.js) to be included before this script.
+*/
+
 document.addEventListener("DOMContentLoaded", function () {
   // 1️⃣ Background subtle zoom
   gsap.from(".hero-img", {

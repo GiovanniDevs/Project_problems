@@ -8,7 +8,19 @@ from .forms import ContactForm
 
 def about_me(request):
     """
-    Renders the About page
+    Render the About page and handle contact form submissions.
+
+    GET: retrieve the most recently updated `About` instance and display an
+    empty `ContactForm`.
+
+    POST: validate and save the submitted `ContactForm`, add a success
+    message, and reinitialize the form for the response.
+
+    Context:
+    - about: latest `About` instance or ``None`` if no records exist
+    - contact_form: an instance of `ContactForm` (bound on POST)
+
+    Template: ``about/about.html``
     """
 
     about = About.objects.all().order_by('-updated_date').first()
